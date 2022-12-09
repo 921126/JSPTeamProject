@@ -60,13 +60,25 @@ public class ShareBoardController extends HttpServlet {
 			request.getRequestDispatcher("shareboard_list.jsp").forward(request, response);
 		}
 		else if(command.equals("/shareboard/shareboard_modify.sb")) { //글 수정
+			//조회한 글에 대한 정보 재활용하기
+			ShareBoardVO vo = service.getContent(request, response);
+			System.out.println(vo.getTitle());
+			request.setAttribute("contVo", vo);
+			
 			request.getRequestDispatcher("shareboard_modify.jsp").forward(request, response);
 		}
 		else if(command.equals("/shareboard/shareboard_delete.sb")) { //글 삭제
 			response.sendRedirect("shareboard_list.sb");
 		}
-		else if(command.equals("/shareboard/shareboard_content.sb")) { //
+		else if(command.equals("/shareboard/shareboard_content.sb")) { //글 조회
+			ShareBoardVO vo = service.getContent(request, response);
+			request.setAttribute("contVo", vo);
 			
+			request.getRequestDispatcher("shareboard_content.jsp").forward(request, response);
+		}
+		else if(command.equals("/shareboard/updateForm.sb")) { //수정한 글 업데이트
+			
+			response.sendRedirect("shareboard_list.sb?sbno=" + request.getParameter("sbno"));
 		}
 		
 	}
