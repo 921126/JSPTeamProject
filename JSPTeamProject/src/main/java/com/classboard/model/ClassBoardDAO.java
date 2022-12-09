@@ -72,12 +72,12 @@ public class ClassBoardDAO {
 		
 	}
 	
-	//글 조회 메소드 -> 반 게시판 리스트 페이지에 출력하게 될것.
+	//리스트페이지 글 조회 메소드 -> 반 게시판 리스트 페이지에 출력하게 될것.
 	public ArrayList<ClassBoardVO> getList(){
 		
 		ArrayList<ClassBoardVO> list = new ArrayList<>();
 		
-		String sql = "select * from board order by CBno";
+		String sql = "select * from classboard order by CBno";
 		
 		try {
 			conn = DriverManager.getConnection(URL,UID,UPW);
@@ -93,7 +93,7 @@ public class ClassBoardDAO {
 				vo.setId(rs.getString("id"));
 				vo.setTitle(rs.getString("title"));
 				vo.setContent(rs.getString("content"));
-				vo.setRegdate(rs.getString("regdate"));
+				vo.setRegdate(rs.getTimestamp("regdate"));
 				
 				list.add(vo);
 				
@@ -132,12 +132,13 @@ public class ClassBoardDAO {
 				vo.setId(rs.getString("ID"));
 				vo.setTitle(rs.getString("title"));
 				vo.setContent(rs.getString("content"));
-				vo.setRegdate(rs.getString("regdate"));
+				vo.setRegdate(rs.getTimestamp("regdate"));
 				
 			}
+			System.out.println(vo.getCbno());
 			
 		} catch(Exception e) {
-			e.getStackTrace();
+			e.printStackTrace();
 		} finally {
 			Util.close(conn, pstmt, rs);
 		}

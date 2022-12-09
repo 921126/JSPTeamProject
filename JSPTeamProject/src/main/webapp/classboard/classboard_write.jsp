@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,34 +9,34 @@
 
 
 
-<!-- ¿ì¼± ¹Ùµð¸¸ ÀÛ¾÷ÇÏ±â -->
+<!-- ìš°ì„  ë°”ë””ë§Œ ìž‘ì—…í•˜ê¸° -->
 <body>
 	<!-- end header -->
 
 	<div align="center" class="div_center">
-		<h3>°Ô½ÃÆÇ ±Û ÀÛ¼º ÆäÀÌÁö</h3>
+		<h3>ê²Œì‹œíŒ ê¸€ ìž‘ì„± íŽ˜ì´ì§€</h3>
 		<hr>
 
 		<form action="registForm.classboard" method="post">
 			<table border="1" width="500">
 				<tr>
-					<td>ÀÛ¼ºÀÚ</td>
+					<td>ìž‘ì„±ìž</td>
 					<td><input type="text" name="writer"
 						value="${sessionScope.user_id}" size="10" readonly required>
 					</td>
 				</tr>
 				<tr>
-					<td>±Û Á¦¸ñ</td>
+					<td>ê¸€ ì œëª©</td>
 					<td><input type="text" name="title" required></td>
 				</tr>
 				<tr>
-					<td>±Û ³»¿ë</td>
+					<td>ê¸€ ë‚´ìš©</td>
 					<td><textarea rows="10" style="width: 95%;" name="content"></textarea>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="submit" value="ÀÛ¼º ¿Ï·á">
-						&nbsp;&nbsp; <input type="button" value="¸ñ·Ï"
+					<td colspan="2"><input type="submit" value="ìž‘ì„± ì™„ë£Œ">
+						&nbsp;&nbsp; <input type="button" value="ëª©ë¡"
 						onclick="location.href='classboard_list.classboard'"></td>
 				</tr>
 

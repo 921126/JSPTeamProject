@@ -1,49 +1,48 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>    
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+   
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 
 <div align="center" class="div_center">
 
-	<h3>°Ô½Ã±Û ³»¿ë º¸±â</h3>
+	<h3>ê²Œì‹œê¸€ ë‚´ìš© ë³´ê¸°</h3>
 	<hr>
 	<table border="1" width="500">
 		<tr>
-			<td width="20%">±Û¹øÈ£</td>
-			<td width="30%">${vo.bno }</td>
+			<td width="20%">ê¸€ë²ˆí˜¸</td>
+			<td width="30%">${vo.cbno }</td>
 			
-			<td width="20%">Á¶È¸¼ö</td>
-			<td width="30%">${vo.hit }</td>
 		</tr>
 		<tr>
-			<td>ÀÛ¼ºÀÚ</td>
+			<td>ì‘ì„±ì</td>
 			<td>${vo.id }</td>
-			<td>ÀÛ¼ºÀÏ</td>
-			<td ><fmt:formatDate value="${vo.regdate}" pattern = "yyyy-MM-dd HH½ÃmmºĞssÃÊ"/></td>
+			<td>ì‘ì„±ì¼</td>
+			<td ><fmt:formatDate value="${vo.regdate}" pattern = "yyyy-MM-dd HHì‹œmmë¶„ssì´ˆ"/></td>
 		</tr>
 		
 		<tr>
-			<td width="20%">±ÛÁ¦¸ñ</td>
+			<td width="20%">ê¸€ì œëª©</td>
 			<td colspan="3">${vo.title }</td>
 		</tr>
 		<tr>
-			<td width="20%">±Û³»¿ë</td>
+			<td width="20%">ê¸€ë‚´ìš©</td>
 			<td colspan="3" height="120px">${vo.content }</td>
 		</tr>
 		
 		<tr>
 			<td colspan="4" align="center">
-				<input type="button" value="¸ñ·Ï" onclick="location.href='classboard_list.classboard'">&nbsp;&nbsp;
+				<input type="button" value="ëª©ë¡" onclick="location.href='classboard_list.classboard'">&nbsp;&nbsp;
 				<c:if test="${sessionScope.user_id != null }">
-				<input type="button" value="¼öÁ¤" onclick="location.href='classboard_modify.classboard?bno=${vo.bno}&writer=${vo.id }'">&nbsp;&nbsp;
-				<input type="button" value="»èÁ¦" onclick="location.href='classboard_delete.classboard?bno=${vo.cbno}&writer=${vo.id }'">&nbsp;&nbsp;
+				<input type="button" value="ìˆ˜ì •" onclick="location.href='classboard_modify.classboard?bno=${vo.cbno}&writer=${vo.id }'">&nbsp;&nbsp;
+				<input type="button" value="ì‚­ì œ" onclick="location.href='classboard_delete.classboard?bno=${vo.cbno}&writer=${vo.id }'">&nbsp;&nbsp;
 				</c:if>
 			</td>
 		</tr>

@@ -1,18 +1,20 @@
 package com.classboard.model;
 
+import java.sql.Timestamp;
+
 public class ClassBoardVO {
 	
 	private int cbno;
 	private String id;
 	private String title;
 	private String content;
-	private String regdate;
+	private Timestamp regdate;
 	
 	public ClassBoardVO() {
 		super();
 	}
 
-	public ClassBoardVO(int cbno, String id, String title, String content, String regdate) {
+	public ClassBoardVO(int cbno, String id, String title, String content, Timestamp regdate) {
 		super();
 		this.cbno = cbno;
 		this.id = id;
@@ -53,11 +55,11 @@ public class ClassBoardVO {
 		this.content = content;
 	}
 
-	public String getRegdate() {
+	public Timestamp getRegdate() {
 		return regdate;
 	}
 
-	public void setRegdate(String regdate) {
+	public void setRegdate(Timestamp regdate) {
 		this.regdate = regdate;
 	}
 
