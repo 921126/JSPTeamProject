@@ -10,7 +10,7 @@
 	<table>
 		<tr>
 			<td width="20%">글 번호</td>
-			<td width="20%">${contVo.sbno }</td>
+			<td width="30%">${contVo.sbno }</td>
 		</tr>
 		<tr>
 			<td>작성자</td>
@@ -29,8 +29,8 @@
 		<tr>
 			<td colspan="4" align="center">
 				<input type="button" value="목록" onclick="location.href='shareboard_list.sb'">&nbsp;&nbsp;
-				<input type="button" value="수정" onclick="location.href='shareboard_modify.sb'">&nbsp;&nbsp;
-				<input type="button" value="삭제" onclick="location.href='shareboard_delete.sb'">&nbsp;&nbsp;				
+				<input type="button" value="수정" onclick="location.href='shareboard_modify.sb?sbno=${contVo.sbno }&writer=${contVo.writer }'">&nbsp;&nbsp;
+				<input type="button" value="삭제" onclick="location.href='shareboard_delete.sb?sbno=${contVo.sbno }&writer=${contVo.writer }'">&nbsp;&nbsp;				
 			</td>
 		</tr>
 	</table>

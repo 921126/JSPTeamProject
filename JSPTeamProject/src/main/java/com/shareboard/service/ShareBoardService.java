@@ -22,6 +22,8 @@ public interface ShareBoardService {
 	//글 수정
 	void update(HttpServletRequest request, HttpServletResponse response);
 	
+	//글 삭제
+	int delete(HttpServletRequest request, HttpServletResponse response);
 	
 	
 }

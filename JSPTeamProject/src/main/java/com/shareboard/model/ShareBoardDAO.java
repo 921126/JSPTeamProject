@@ -110,7 +110,7 @@ public class ShareBoardDAO {
 	
 	//글 수정 업데이트 메소드
 	public void update(String sbno, String title, String content) {
-		String sql = "update board set title = ?, content = ? where sbno = ?";
+		String sql = "update shareboard set title = ?, content = ? where sbno = ?";
 		try {
 			conn = DriverManager.getConnection(URL, UID, UPW);
 			pstmt = conn.prepareStatement(sql);
@@ -123,6 +123,29 @@ public class ShareBoardDAO {
 		} finally {
 			Util.close(conn, pstmt, rs);
 		}
+	}
+	
+	//글 삭제 메소드
+	public int delete(String sbno) {
+		int result = 0;
+		
+		String sql = "delete from shareboard where sbno = ?";
+		
+		System.out.println("1");
+		try {
+			conn = DriverManager.getConnection(URL, UID, UPW);
+			System.out.println("2");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, sbno);
+			System.out.println("3");
+			result = pstmt.executeUpdate();
+			System.out.println("4");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			Util.close(conn, pstmt, rs);
+		}
+		return result;
 	}
 	
 	
