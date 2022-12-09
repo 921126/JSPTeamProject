@@ -12,6 +12,7 @@
 	<table class="table table-bordered">
 		<thead>
 			<tr>
+				<th>No.</th>
 				<th>글 번호</th>
 				<th>작성자</th>
 				<th>제목</th>
@@ -19,12 +20,15 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>글 번호 데이터</td>
-				<td>작성자 데이터</td>
-				<td>제목 데이터-글 작성 페이지로 연결</td>
-				<td>날짜 데이터</td>
-			</tr>
+			<c:forEach var="vo" items="${list }" varStatus="num">
+				<tr>
+					<td></td>
+					<td>글 번호 데이터</td>
+					<td>작성자 데이터</td>
+					<td>제목 데이터-글 작성 페이지로 연결</td>
+					<td>날짜 데이터</td>
+				</tr>
+			</c:forEach>
 		</tbody>
 		<tbody>
 			<tr>

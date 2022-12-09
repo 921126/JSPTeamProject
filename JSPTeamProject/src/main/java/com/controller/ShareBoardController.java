@@ -1,6 +1,8 @@
 package com.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.shareboard.model.ShareBoardVO;
 import com.shareboard.service.ShareBoardServiceImpl;
 
 @WebServlet("*.sb")
@@ -45,10 +48,15 @@ public class ShareBoardController extends HttpServlet {
 			response.sendRedirect("shareboard_list.sb");
 		}
 		else if(command.equals("/shareboard/shareboard_write.sb")) { //글 작성
+			
 			request.getRequestDispatcher("shareboard_write.jsp").forward(request, response);
 			return;
 		}
 		else if(command.equals("/shareboard/shareboard_list.sb")) { //글 목록
+			//목록 조회 메소드 - dao에서 받은 list를 화면에 뿌리기
+			ArrayList<ShareBoardVO> list = service.getList(request, response);
+			request.setAttribute("list", list);
+			
 			request.getRequestDispatcher("shareboard_list.jsp").forward(request, response);
 		}
 		else if(command.equals("/shareboard/shareboard_modify.sb")) { //글 수정

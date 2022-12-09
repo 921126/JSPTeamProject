@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import com.util.Util;
 
@@ -35,6 +36,7 @@ public class ShareBoardDAO {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	
+
 	//글 등록, DB에서 데이터를 받아 가공한 정보를 다시 DB에 넣어주는 작업
 	public void regist(String writer, String title, String content) {
 		String sql = "insert into ShareBoard values(shareboard_seq.nextval,\r\n"
@@ -53,7 +55,31 @@ public class ShareBoardDAO {
 		}
 	}
 	
-	
+	public ArrayList<ShareBoardVO> getList() {
+		ArrayList<ShareBoardVO> list = new ArrayList<>();
+		
+		String sql = "select * from shareboard order by sbno desc";
+		try {
+			conn = DriverManager.getConnection(URL, UID, UPW);
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				ShareBoardVO vo = new ShareBoardVO(
+						rs.getInt("sbno"),
+						rs.getString("writer"),
+						rs.getString("title"),
+						rs.getString("content"),
+						rs.getTimestamp("regdate"));
+				list.add(vo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			Util.close(conn, pstmt, rs);
+		}
+		return list;
+	}
 	
 	
 }
