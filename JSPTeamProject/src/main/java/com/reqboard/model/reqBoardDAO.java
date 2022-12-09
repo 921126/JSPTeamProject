@@ -40,7 +40,7 @@ public class reqBoardDAO {
 	//1. 글작성
 	public void regist(String id, String title, String content) {
 		
-		String sql = "insert into reqboard(bno, id, title, content) values(reqboard_seq.nextval, ?,?,?)";
+		String sql = "insert into reqboard(rbno, id, title, content) values(reqboard_seq.nextval, ?,?,?)";
 		
 		try {
 			

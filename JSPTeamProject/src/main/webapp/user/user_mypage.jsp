@@ -11,9 +11,9 @@
 	<div align="center">
 		<div>
 		<a href="${pageContext.request.contextPath}/shareboard/shareboard_list.sb">[공용게시판]</a>
-		<a href="">[반전용게시판]</a>
+		<a href="${pageContext.request.contextPath}/classboard/classboard_list.classboard">[반전용게시판]</a>
 		<a href="${pageContext.request.contextPath}/JobBoard/JobBoard_list.jobboard">[취업게시판]</a>
-		<a href="">[건의사항]</a>
+		<a href="${pageContext.request.contextPath}/reqBoard/reqBoard_list.reqBoard">[건의사항]</a>
 		<a href="">[HOME]</a>
 		</div>
 		<br>
