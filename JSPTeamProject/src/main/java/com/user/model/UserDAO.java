@@ -25,9 +25,9 @@ public class UserDAO {
 	}
 	
 	//db작업 필요 변수
-	public String URL = "";
-	public String UID = "";
-	public String UPW = "";
+	public String URL = "jdbc:oracle:thin:@172.30.1.71:1521:xe";
+	public String UID = "prjt";
+	public String UPW = "prjt";
 	
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
@@ -35,7 +35,7 @@ public class UserDAO {
 	
 	////////////////////////////////// 메서드 /////////////////////
 	
-	//1. 로그인 -> 회원정보 획득
+	//1. 로그인 
 	public UserVO login(String id, String pw) {
 		
 		UserVO vo = null;
@@ -79,5 +79,48 @@ public class UserDAO {
 		
 		return vo;
 	}
-	
+
+	//2. 회원정보 획득
+	public UserVO getInfo(String id) {
+		
+		UserVO vo = null;
+		
+		String sql = "select * from users where id = ?";
+		
+		try {
+			
+			//DB연결
+			conn = DriverManager.getConnection(URL, UID, UPW);
+			pstmt = conn.prepareStatement(sql);
+			
+			//sql문 완성
+			pstmt.setString(1, id);
+			
+			//실행
+			rs = pstmt.executeQuery();
+			
+			//만약에 정보가 있다면
+			if(rs.next()) {
+				
+				String id2 = rs.getString("id");
+				String pw = rs.getString("pw");
+				String name = rs.getString("name");
+				int age = rs.getInt("age");
+				String gender = rs.getString("aged");
+				String classNO = rs.getString("classNo");
+				String tecaher = rs.getString("teacher");
+				
+				vo = new UserVO(id2, pw, name, age, gender, classNO, tecaher);
+			}
+			
+			
+		} catch (Exception e) {
+			e.getStackTrace();
+			System.out.println("정보획득 실패");
+		} finally {
+			Util.close(conn, pstmt, rs);
+		}
+		
+		return vo;
+	}
 }
