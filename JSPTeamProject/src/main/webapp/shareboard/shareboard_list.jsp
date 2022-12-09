@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,10 +20,10 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td>ㅁㄴㅇㄹ</td>
-				<td>ㅁㄴㅇㄹ</td>
-				<td>ㅁㅇㄴㄹ</td>
-				<td>ㅁㄴㅇㄹ</td>
+				<td>글 번호 데이터</td>
+				<td>작성자 데이터</td>
+				<td>제목 데이터-글 작성 페이지로 연결</td>
+				<td>날짜 데이터</td>
 			</tr>
 		</tbody>
 		<tbody>

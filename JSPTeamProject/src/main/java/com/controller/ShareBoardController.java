@@ -48,6 +48,18 @@ public class ShareBoardController extends HttpServlet {
 			request.getRequestDispatcher("shareboard_write.jsp").forward(request, response);
 			return;
 		}
+		else if(command.equals("/shareboard/shareboard_list.sb")) { //글 목록
+			request.getRequestDispatcher("shareboard_list.jsp").forward(request, response);
+		}
+		else if(command.equals("/shareboard/shareboard_modify.sb")) { //글 수정
+			request.getRequestDispatcher("shareboard_modify.jsp").forward(request, response);
+		}
+		else if(command.equals("/shareboard/shareboard_delete.sb")) { //글 삭제
+			response.sendRedirect("shareboard_list.sb");
+		}
+		else if(command.equals("/shareboard/shareboard_content.sb")) { //
+			
+		}
 		
 	}
 }

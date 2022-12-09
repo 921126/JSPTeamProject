@@ -29,8 +29,8 @@
 		<tr>
 			<td colspan="4" align="center">
 				<input type="button" value="목록" onclick="location.href='shareboard_list.sb'">&nbsp;&nbsp;
-				<input type="button" value="수정" onclick="location.href='수정링크'.sb">&nbsp;&nbsp;
-				<input type="button" value="삭제" onclick="location.href='삭제링크'.sb">&nbsp;&nbsp;				
+				<input type="button" value="수정" onclick="location.href='shareboard_modify.sb'">&nbsp;&nbsp;
+				<input type="button" value="삭제" onclick="location.href='shareboard_delete.sb'">&nbsp;&nbsp;				
 			</td>
 		</tr>
 	</table>

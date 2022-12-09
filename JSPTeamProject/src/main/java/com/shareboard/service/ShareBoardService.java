@@ -9,6 +9,7 @@ public interface ShareBoardService {
 	//글 등록하기
 	void regist(HttpServletRequest request, HttpServletResponse response);
 	
+	//글 목록
 	
 	
 }

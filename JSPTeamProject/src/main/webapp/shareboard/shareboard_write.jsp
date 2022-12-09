@@ -36,7 +36,7 @@
 					<td colspan="2">
 						<input type="submit" value="작성">
 						&nbsp;&nbsp;
-						<input type="button" value="목록" onclick="location.href='글 리스트 주소.sb'">
+						<input type="button" value="목록" onclick="location.href='shareboard_list.sb'">
 					</td>
 				</tr>
 			</table>
