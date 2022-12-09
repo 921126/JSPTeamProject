@@ -5,9 +5,11 @@ import javax.servlet.http.HttpServletResponse;
 
 public interface ShareBoardService {
 	
-	//public 생략
+	//public 생략함
+	//글 등록하기
 	void regist(HttpServletRequest request, HttpServletResponse response);
 	
+	//글 목록
 	
 	
 }
