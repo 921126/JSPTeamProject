@@ -1,8 +1,11 @@
 package com.shareboard.model;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
+import com.util.Util;
 
 public class ShareBoardDAO {
 	
@@ -32,10 +35,25 @@ public class ShareBoardDAO {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	
+	//글 등록, DB에서 데이터를 받아 가공한 정보를 다시 DB에 넣어주는 작업
 	public void regist(String writer, String title, String content) {
-		String sql = "insert into board values(ShareBoard_seq.nextval,";
-		
+		String sql = "insert into ShareBoard values(shareboard_seq.nextval,\r\n"
+				+ "?, ?, ?, sysdate)";
+		try {
+			conn = DriverManager.getConnection(URL, UID, UPW);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, writer);
+			pstmt.setString(2, title);
+			pstmt.setString(3, content);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			Util.close(conn, pstmt, rs);
+		}
 	}
+	
+	
 	
 	
 }
