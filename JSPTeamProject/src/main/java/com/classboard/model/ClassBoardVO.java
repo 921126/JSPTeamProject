@@ -60,6 +60,12 @@ public class ClassBoardVO {
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
+
+	@Override
+	public String toString() {
+		return "ClassBoardVO [cbno=" + cbno + ", id=" + id + ", title=" + title + ", content=" + content + ", regdate="
+				+ regdate + "]";
+	}
 	
 	
 	

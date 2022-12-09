@@ -1,8 +1,12 @@
 package com.classboard.model;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import com.util.Util;
 
 public class ClassBoardDAO {
 	
@@ -41,8 +45,153 @@ public class ClassBoardDAO {
 	// 아래서 부터는 사용할 메서드 작성내용.
 	
 	
-	
+	//글 작성 메소드
+	public void regist(String id, String title, String content) {
 		
+		String sql = "insert into classBoard values(classBoard_seq.nextval, ?, ?, ?, sysdate)";
+		
+		try {
+			
+			//db 연결
+			conn = DriverManager.getConnection(URL, UID, UPW);
+			pstmt = conn.prepareStatement(sql);
+			
+			//sql문 완성
+			pstmt.setString(1, id);
+			pstmt.setString(2, title);
+			pstmt.setString(3, content);
+			
+			//crud pstmt 
+			pstmt.executeUpdate(); //성공시 1반환, 실패시 0반환. 하지만 값 받지 않음.
+			
+		} catch (Exception e) {
+			e.getStackTrace();
+		} finally {
+			Util.close(conn, pstmt, rs);
+		}
+		
+	}
+	
+	//글 조회 메소드 -> 반 게시판 리스트 페이지에 출력하게 될것.
+	public ArrayList<ClassBoardVO> getList(){
+		
+		ArrayList<ClassBoardVO> list = new ArrayList<>();
+		
+		String sql = "select * from board order by CBno";
+		
+		try {
+			conn = DriverManager.getConnection(URL,UID,UPW);
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				ClassBoardVO vo = new ClassBoardVO();
+				
+				vo.setCbno(rs.getInt("cbno"));
+				vo.setId(rs.getString("id"));
+				vo.setTitle(rs.getString("title"));
+				vo.setContent(rs.getString("content"));
+				vo.setRegdate(rs.getString("regdate"));
+				
+				list.add(vo);
+				
+			}
+			
+		} catch (Exception e) {
+			e.getStackTrace();
+		} finally {
+			Util.close(conn, pstmt, rs);
+		}
+		
+		return list;
+	}
+	
+	//글 내용(content) 확인 메소드
+	public ClassBoardVO getContent(String cbno) {
+		
+		ClassBoardVO vo = null; //지역변수이기 때문에 초기에 값도 선언해줘야함.
+		
+		String sql = "select * from classBoard where cbno = ?";
+		
+		try {
+			
+			conn = DriverManager.getConnection(URL,UID,UPW);
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, cbno);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				vo = new ClassBoardVO();
+				
+				vo.setCbno(rs.getInt("cbno"));
+				vo.setId(rs.getString("ID"));
+				vo.setTitle(rs.getString("title"));
+				vo.setContent(rs.getString("content"));
+				vo.setRegdate(rs.getString("regdate"));
+				
+			}
+			
+		} catch(Exception e) {
+			e.getStackTrace();
+		} finally {
+			Util.close(conn, pstmt, rs);
+		}
+		
+		return vo;
+	}
+	
+	//글 수정 메서드
+	public void update(String cbno, String title, String content) {
+		
+		String sql = "update ClassBoard set title = ?, content = ? where cbno = ?";
+		
+		try {
+			
+			conn = DriverManager.getConnection(URL,UID,UPW);
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, title);
+			pstmt.setString(2, content);
+			pstmt.setString(3, cbno);
+			
+			pstmt.executeUpdate();
+			
+		} catch(Exception e) {
+			e.getStackTrace();
+		} finally {
+			Util.close(conn, pstmt, rs);
+		}
+		
+	}
+	
+	//글 삭제 메서드
+	public void delete(String cbno) {
+		
+		String sql = "delete from classboard where cbno = ?";
+		
+		try {
+			
+			conn = DriverManager.getConnection(URL,UID,UPW);
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, cbno);
+			
+			pstmt.execute(); //sql 성공시 1반환, 실패시 0 반환
+			
+		} catch(Exception e) {
+			e.getStackTrace();
+		} finally {
+			Util.close(conn, pstmt, rs);
+		}
+		
+	}
+	
+	
 	
 
 }
