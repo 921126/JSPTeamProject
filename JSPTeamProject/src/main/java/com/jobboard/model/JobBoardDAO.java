@@ -4,6 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+
+import com.util.Util;
 
 public class JobBoardDAO {
 
@@ -14,7 +18,7 @@ public class JobBoardDAO {
 		
 		try {
 			
-			Class.forName("oracle,jdbc.driver.OracleDriver");
+			Class.forName("oracle.jdbc.driver.OracleDriver");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -27,7 +31,7 @@ public class JobBoardDAO {
 		return instance;
 	}
 	
-	public String URL = "jdbc:oracle:thin@localhost:1521:xe";
+	public String URL = "jdbc:oracle:thin:@172.30.1.71:1521:xe";
 	public String UID = "prjt";
 	public String UPW = "prjt";
 
@@ -55,11 +59,130 @@ public class JobBoardDAO {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
+			System.out.println("insert 실패");
 			
+		}finally {
+			Util.close(con, pstmt, rs);
 		}
 	
 	}
 	
+	//취업게시판 '글 조회' 메서드
+	public ArrayList<JobBoardVO> JobgetList(){
+		
+		ArrayList<JobBoardVO> joblist = new ArrayList<>();
+		
+		String sql = "select * from jobboard order by desc";
+		
+		try {
+			con = DriverManager.getConnection(URL, UID, UPW);
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			//결과값을 ArrayList에 저장하기
+			while(rs.next()) {
+				int jno = rs.getInt("jno");
+				String id = rs.getString("id");
+				String title = rs.getString("title");
+				String content = rs.getString("content");
+				Timestamp regdate = rs.getTimestamp("regdate");
+				
+				JobBoardVO vo = new JobBoardVO(jno, id, title, content, regdate);
+				joblist.add(vo);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			Util.close(con, pstmt, rs);
+		}
+		return joblist;
+	}
+	
+	//취업게시판 '글 내용' 메서드
+	public JobBoardVO JobgetContent(String jno) {
+		
+
+		JobBoardVO vo = null;
+		
+		String sql = "select * from jobboard where jno = ?";
+		
+		try {
+			con = DriverManager.getConnection(URL, UID, UPW);
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, jno);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				vo.setJno( rs.getInt("jno"));
+				vo.setId( rs.getString("id"));
+				vo.setTitle( rs.getString("title"));
+				vo.setContent( rs.getString("content"));
+				vo.setRegdate( rs.getTimestamp("regdate"));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			Util.close(con, pstmt, rs);
+		}
+		
+		return vo;
+	}
+	
+	
+	
+	//글 수정 메서드
+	public void update(String jno, String title, String content) {
+		
+		String sql = "update jobboard set title=?, content=? where jno=?";
+		
+		try {
+			
+			con = DriverManager.getConnection(URL,UID,UPW);
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, title);
+			pstmt.setString(2, content);
+			pstmt.setString(3, jno);
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			Util.close(con, pstmt, rs);
+		}
+
+	}
+	
+	
+	//글 삭제 메서드
+	public void delete(String jno) {
+		
+		String sql = "delete from jobboard where jno = ?";
+		
+		try {
+			con = DriverManager.getConnection(URL, UID, UPW);
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, jno);
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			Util.close(con, pstmt, rs);
+		}
+		
+	}
 	
 	
 }
