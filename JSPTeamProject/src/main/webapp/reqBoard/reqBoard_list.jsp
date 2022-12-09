@@ -32,7 +32,7 @@
 					<td>
 					<a href="reqBoard_content.reqBoard?rbno=${vo.rbno}">${vo.title }</a>
 					</td>
-					<td><fmt:formatDate value ="${vo.regdate }" pattern="yyyy-MM-dd HH시mm분 ss초"/></td>
+					<td><fmt:formatDate value ="${vo.regdate}" pattern="yyyy-MM-dd HH시mm분 ss초"/></td>
 				</tr>
 				</c:forEach>
 			</tbody>

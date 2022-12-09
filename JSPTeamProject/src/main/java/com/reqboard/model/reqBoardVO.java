@@ -4,32 +4,32 @@ import java.sql.Timestamp;
 
 public class reqBoardVO {
 	
-	private int RBNO;
+	private int rbno;
 	private String id;
 	private String title;
 	private String content;
-	private Timestamp legdate;
+	private Timestamp regdate;
 	
 	//생성자
 	public reqBoardVO() {
 	}
 
-	public reqBoardVO(int rBNO, String id, String title, String content, Timestamp legdate) {
+	public reqBoardVO(int rbno, String id, String title, String content, Timestamp legdate) {
 		super();
-		RBNO = rBNO;
+		this.rbno = rbno;
 		this.id = id;
 		this.title = title;
 		this.content = content;
-		this.legdate = legdate;
+		this.regdate = legdate;
 	}
 
 	//get & set
-	public int getRBNO() {
-		return RBNO;
+	public int getRbno() {
+		return rbno;
 	}
 
-	public void setRBNO(int rBNO) {
-		RBNO = rBNO;
+	public void setRbno(int rbno) {
+		this.rbno = rbno;
 	}
 
 	public String getId() {
@@ -56,12 +56,12 @@ public class reqBoardVO {
 		this.content = content;
 	}
 
-	public Timestamp getLegdate() {
-		return legdate;
+	public Timestamp getRegdate() {
+		return regdate;
 	}
 
-	public void setLegdate(Timestamp legdate) {
-		this.legdate = legdate;
+	public void setRegdate(Timestamp legdate) {
+		this.regdate = legdate;
 	}
 
 	

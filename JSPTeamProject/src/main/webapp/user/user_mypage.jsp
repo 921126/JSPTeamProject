@@ -18,8 +18,13 @@
 		</div>
 		<br>
 		<br>
-		${sessionScope.user_id }
-		(${sessionScope.user_name})님 환영합니다.<br>
+		<h2>
+		${sessionScope.user_id }님 환영합니다.<br>
+		</h2>
+		<br>
+		<h3>정보출력 <br></h3>
+		이름: ${sessionScope.user_name} / 나이: ${sessionScope.user_age} / 성별: ${sessionScope.user_gender} / 클래스: ${sessionScope.user_classNo} / 담당 선생님 : ${sessionScope.user_teacher}
+		
 		
 		<div>
 		<a href="user_login.user">[로그아웃]</a>

@@ -60,7 +60,11 @@ public class UserController extends HttpServlet {
 				//세션 저장해서 아이디 이름 전달
 				session.setAttribute("user_id", vo.getId());
 				session.setAttribute("user_name", vo.getName());
-				
+				session.setAttribute("user_age", vo.getAge());
+				session.setAttribute("user_gender", vo.getGender());
+				session.setAttribute("user_classNo", vo.getClassNo());
+				session.setAttribute("user_teacher", vo.getTeacher());
+				System.out.println(vo.getTeacher());
 				//페이지 이동
 				response.sendRedirect("user_mypage.user");//컨트롤러 태우기
 				
