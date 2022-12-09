@@ -18,17 +18,17 @@
 			
 			<tr>
 				<td>글 번호</td>
-				<td>${vo.bno }
+				<td>${vo.jno }
 					
 					<!-- hidden은 눈에 안 보이는 input태그이다. 
 					화면에 보일 필요는 없는데 데이터가 반드시 전송되어야할 때 사용한다. -->
 					
-					<input type="hidden" name="bno" value="${vo.bno }">
+					<input type="hidden" name="jno" value="${vo.jno }">
 				</td>
 			</tr>
 			<tr>
 				<td>작성자</td>
-				<td><input type="text" name="writer" value="${vo.writer }" readonly></td>
+				<td><input type="text" name="id" value="${vo.id }" readonly></td>
 			</tr>
 			<tr>
 				<td>글 제목</td>
@@ -45,7 +45,7 @@
 			<tr>
 				<td colspan="2">
 					<input type="submit" value="수정 하기" onclick="">&nbsp;&nbsp;
-					<input type="button" value="목록" onclick="location.href='board_list.board'">        
+					<input type="button" value="목록" onclick="location.href='JobBoard_list.jobboard'">        
 				</td>
 			</tr>
 			

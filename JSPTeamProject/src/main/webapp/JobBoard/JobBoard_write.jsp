@@ -18,7 +18,7 @@
 			<tr>
 				<td>ÀÛ¼ºÀÚ</td>
 				<td>
-					<input type="text" name="writer" value="" size="10">
+					<input type="text" name="id" value="${sessionScope.user_id }" size="10" readonly>
 				</td>
 			</tr>
 			<tr>

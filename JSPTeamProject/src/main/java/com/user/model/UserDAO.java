@@ -106,7 +106,7 @@ public class UserDAO {
 				String pw = rs.getString("pw");
 				String name = rs.getString("name");
 				int age = rs.getInt("age");
-				String gender = rs.getString("aged");
+				String gender = rs.getString("gender");
 				String classNO = rs.getString("classNo");
 				String tecaher = rs.getString("teacher");
 				
