@@ -7,17 +7,23 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jobboard.model.JobBoardDAO;
 import com.jobboard.model.JobBoardVO;
+import com.user.model.UserDAO;
 import com.user.model.UserVO;
 
 public class JobBoardServiceImpl implements JobBoardService{
 
 	@Override
 	public void Jobregist(HttpServletRequest request, HttpServletResponse response) {
+		
 		String id = request.getParameter("id");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		
+		System.out.println(id);
+		
+		UserDAO dao = UserDAO.getInstance();
 		JobBoardDAO jdao = JobBoardDAO.getInstance();
+		
 		jdao.Jobregist(id, title, content);
 		
 	}
@@ -48,13 +54,17 @@ public class JobBoardServiceImpl implements JobBoardService{
 		String content = request.getParameter("content");
 		
 		JobBoardDAO jdao = JobBoardDAO.getInstance();
-//		jdao.
+		jdao.update(jno, title, content);
 		
 	}
 
 	@Override
 	public void delete(HttpServletRequest request, HttpServletResponse response) {
 		
+		String jno = request.getParameter("jno");
+		
+		JobBoardDAO jdao = JobBoardDAO.getInstance();
+		jdao.delete(jno);
 	}
 
 }

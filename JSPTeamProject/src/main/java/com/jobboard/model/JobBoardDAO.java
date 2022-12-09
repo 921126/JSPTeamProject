@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
+import com.user.model.UserVO;
 import com.util.Util;
 
 public class JobBoardDAO {
@@ -39,6 +40,7 @@ public class JobBoardDAO {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	
+	UserVO vo = new UserVO();
 	
 	//취업게시판 '글 작성' 메서드 ( 관리자만 작성가능하고, 학생은 확인만 가능 )
 	public void Jobregist( String id , String title, String content ) {
@@ -72,7 +74,7 @@ public class JobBoardDAO {
 		
 		ArrayList<JobBoardVO> joblist = new ArrayList<>();
 		
-		String sql = "select * from jobboard order by desc";
+		String sql = "select * from jobboard order by jno desc";
 		
 		try {
 			con = DriverManager.getConnection(URL, UID, UPW);
@@ -116,8 +118,9 @@ public class JobBoardDAO {
 			pstmt.setString(1, jno);
 			
 			rs = pstmt.executeQuery();
-			
+
 			if(rs.next()) {
+				vo = new JobBoardVO();
 				vo.setJno( rs.getInt("jno"));
 				vo.setId( rs.getString("id"));
 				vo.setTitle( rs.getString("title"));
@@ -155,6 +158,7 @@ public class JobBoardDAO {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
+			System.out.println("업데이트 안됨");
 		}finally {
 			Util.close(con, pstmt, rs);
 		}

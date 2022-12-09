@@ -54,8 +54,8 @@ public class JobBoardController extends HttpServlet {
 		//글 작성화면 write ( 관리자는 작성가능, 학생은 읽기만 가능 )	
 		}else if(command.equals("/JobBoard/JobBoard_write.jobboard")) {
 			
-			if(session.getAttribute("teacher") == null) {
-				response.sendRedirect("JobBoard_write.jsp");
+			if(session.getAttribute("user_id") == null) {
+				response.sendRedirect("../user/user_login.jsp");
 				return;
 			}
 			

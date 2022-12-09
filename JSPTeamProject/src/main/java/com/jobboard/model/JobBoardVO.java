@@ -2,6 +2,8 @@ package com.jobboard.model;
 
 import java.sql.Timestamp;
 
+import com.user.model.UserVO;
+
 public class JobBoardVO {
 
 	private int jno;
@@ -10,9 +12,12 @@ public class JobBoardVO {
 	private String content;
 	private Timestamp regdate;
 	
+	UserVO vo = new UserVO();
 	
+			
 	public JobBoardVO() {
 		super();
+		
 	}
 
 
