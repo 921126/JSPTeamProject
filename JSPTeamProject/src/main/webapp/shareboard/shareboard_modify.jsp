@@ -14,28 +14,28 @@
 			<table border="1" width="500">
 				<tr>
 					<td>글 번호</td>
-					<td><b>글번호데이터</b>
-						<input type="hidden" name="sbno" value="번호데이터">
+					<td><b>${contVo.sbno }</b>
+						<input type="hidden" name="sbno" value="${contVo.sbno }">
 					</td>
 				</tr>
 				<tr>
 					<td>작성자</td>
-					<td><input type="text" name="writer" value="작성자데이터" readonly></td>
+					<td><input type="text" name="writer" value="${contVo.writer }" readonly></td>
 				</tr>
 				<tr>
 					<td>글 제목</td>
-					<td><input type="text" name="title" value="제목데이터"></td>
+					<td><input type="text" name="title" value="${contVo.title }"></td>
 				</tr>
 				<tr>
 					<td>글 내용</td>
 					<td>
-						<textarea rows="10" style="width: 95%;" name="content">내용데이터
+						<textarea rows="10" style="width: 95%;" name="content">${contVo.content }
 						</textarea>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<input type="submit" value="수정" onclick="">&nbsp;&nbsp;
+						<input type="submit" value="수정">&nbsp;&nbsp;
 						<input type="button" value="목록" onclick="location.href='shareboard_list.sb'">
 					</td>
 				</tr>

@@ -22,11 +22,11 @@
 		<tbody>
 			<c:forEach var="vo" items="${list }" varStatus="num">
 				<tr>
-					<td></td>
-					<td>글 번호 데이터</td>
-					<td>작성자 데이터</td>
-					<td>제목 데이터-글 작성 페이지로 연결</td>
-					<td>날짜 데이터</td>
+					<td>${num.count }</td>
+					<td align="center">${vo.sbno }</td>
+					<td>${vo.writer }</td>
+					<td><a href="shareboard_content.sb?sbno=${vo.sbno }">${vo.title }</a></td>
+					<td><fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd HH시 mm분"></fmt:formatDate></td>
 				</tr>
 			</c:forEach>
 		</tbody>

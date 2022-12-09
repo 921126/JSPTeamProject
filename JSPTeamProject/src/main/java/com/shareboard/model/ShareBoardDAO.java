@@ -55,6 +55,7 @@ public class ShareBoardDAO {
 		}
 	}
 	
+	//글 목록 출력을 위해 배열에 각 행의 정보를 받아 오는 메소드
 	public ArrayList<ShareBoardVO> getList() {
 		ArrayList<ShareBoardVO> list = new ArrayList<>();
 		
@@ -79,6 +80,49 @@ public class ShareBoardDAO {
 			Util.close(conn, pstmt, rs);
 		}
 		return list;
+	}
+	
+	//글 조회 시 글 상세 내용을 표시해 주기 위한 메소드, 게시판 번호 별 데이터 추출
+	public ShareBoardVO getContent(String sbno) {
+		ShareBoardVO vo = null;
+		String sql = "select * from shareboard where sbno = ?";
+		try {
+			conn = DriverManager.getConnection(URL, UID, UPW);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, sbno);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				vo = new ShareBoardVO(
+						rs.getInt("sbno"), 
+						rs.getString("writer"), 
+						rs.getString("title"), 
+						rs.getString("content"), 
+						rs.getTimestamp("regdate"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			Util.close(conn, pstmt, rs);
+		}
+		return vo;
+	}
+	
+	//글 수정 업데이트 메소드
+	public void update(String sbno, String title, String content) {
+		String sql = "update board set title = ?, content = ? where sbno = ?";
+		try {
+			conn = DriverManager.getConnection(URL, UID, UPW);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, title);
+			pstmt.setString(2, content);
+			pstmt.setString(3, sbno);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			Util.close(conn, pstmt, rs);
+		}
 	}
 	
 	

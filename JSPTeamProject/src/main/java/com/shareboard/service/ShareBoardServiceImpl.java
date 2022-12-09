@@ -34,18 +34,31 @@ public class ShareBoardServiceImpl implements ShareBoardService {
 		
 		return list;
 	}
+
+	@Override
+	public ShareBoardVO getContent(HttpServletRequest request, HttpServletResponse response) {
+		String sbno = request.getParameter("sbno");
+		ShareBoardDAO dao = ShareBoardDAO.getInstance();
+		ShareBoardVO vo = dao.getContent(sbno);
+		return vo;
+	}
+
+
+	@Override
+	public void update(HttpServletRequest request, HttpServletResponse response) {
+		//화면에서 넘어오는 값
+		String sbno = request.getParameter("sbno");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		ShareBoardDAO dao = ShareBoardDAO.getInstance();
+		dao.update(sbno, title, content);
+		
+	}
 	
 	
 	
 	
 	
-//	//로그인처리, 작성자 id 받아오기(안씀)
-//	@Override
-//	public void userName(HttpServletRequest request, HttpServletResponse response) {
-//		UserDAO udao = UserDAO.getInstance();
-//		UserVO vo = udao.login("ohy", "1234");
-//		HttpSession session = request.getSession();
-//		session.setAttribute("user_id", vo.getId());
-//	}
+	
 	
 }

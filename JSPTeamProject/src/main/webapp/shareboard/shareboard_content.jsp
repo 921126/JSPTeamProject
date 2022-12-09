@@ -10,21 +10,21 @@
 	<table>
 		<tr>
 			<td width="20%">글 번호</td>
-			<td width="20%">숫자</td>
+			<td width="20%">${contVo.sbno }</td>
 		</tr>
 		<tr>
 			<td>작성자</td>
-			<td><b>작성자데이터</b></td>
+			<td><b>${contVo.writer }</b></td>
 			<td>작성일</td>
-			<td><b>날짜데이터</b></td>
+			<td><b>${contVo.regdate }</b></td>
 		</tr>
 		<tr>
 			<td width="20%">글제목</td>
-			<td colspan="3"><b>제목데이터</b></td>
+			<td colspan="3"><b>${contVo.title }</b></td>
 		</tr>
 		<tr>
 			<td width="20%">글내용</td>
-			<td colspan="3" height="120px"><b>내용데이터</b></td>
+			<td colspan="3" height="120px"><b>${contVo.content }</b></td>
 		</tr>
 		<tr>
 			<td colspan="4" align="center">
