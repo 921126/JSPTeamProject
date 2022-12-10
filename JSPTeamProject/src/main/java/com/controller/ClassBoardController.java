@@ -91,7 +91,7 @@ public class ClassBoardController extends HttpServlet {
 			ClassBoardVO vo = sv.getContent(request, response);
 			request.setAttribute("vo", vo);
 			//forward방식으로 vo 값을 가지고 modify(수정화면) 페이지로 넘어감.
-			request.getRequestDispatcher("classboard_content.jsp").forward(request, response);
+			request.getRequestDispatcher("classboard_modify.jsp").forward(request, response);
 			
 			break;
 		}

@@ -46,8 +46,6 @@ public class CBServiceImpl implements CBService {
 		//해당 글 조회를 위해서 글 번호가 필요
 		String cbno = request.getParameter("cbno");
 		
-		System.out.println(cbno);
-		
 		//dao 생성
 		ClassBoardDAO dao = ClassBoardDAO.getInstance();
 		ClassBoardVO vo = dao.getContent(cbno);

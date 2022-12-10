@@ -77,7 +77,7 @@ public class ClassBoardDAO {
 		
 		ArrayList<ClassBoardVO> list = new ArrayList<>();
 		
-		String sql = "select * from classboard order by CBno";
+		String sql = "select * from classboard order by CBno desc";
 		
 		try {
 			conn = DriverManager.getConnection(URL,UID,UPW);
@@ -135,7 +135,6 @@ public class ClassBoardDAO {
 				vo.setRegdate(rs.getTimestamp("regdate"));
 				
 			}
-			System.out.println(vo.getCbno());
 			
 		} catch(Exception e) {
 			e.printStackTrace();

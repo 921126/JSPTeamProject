@@ -41,8 +41,8 @@
 			<td colspan="4" align="center">
 				<input type="button" value="목록" onclick="location.href='classboard_list.classboard'">&nbsp;&nbsp;
 				<c:if test="${sessionScope.user_id != null }">
-				<input type="button" value="수정" onclick="location.href='classboard_modify.classboard?bno=${vo.cbno}&writer=${vo.id }'">&nbsp;&nbsp;
-				<input type="button" value="삭제" onclick="location.href='classboard_delete.classboard?bno=${vo.cbno}&writer=${vo.id }'">&nbsp;&nbsp;
+				<input type="button" value="수정" onclick="location.href='classboard_modify.classboard?cbno=${vo.cbno}&writer=${vo.id }'">&nbsp;&nbsp;
+				<input type="button" value="삭제" onclick="location.href='classboard_delete.classboard?cbno=${vo.cbno}&writer=${vo.id }'">&nbsp;&nbsp;
 				</c:if>
 			</td>
 		</tr>
