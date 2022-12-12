@@ -37,7 +37,7 @@
 		<tr>
 			<td colspan="4" align="center">
 				<input type="button" value="목록" onclick="location.href='reqBoard_list.reqBoard'">&nbsp;&nbsp;
-				<c:if test="${sessionScope.user_id != null}">
+				<c:if test="${sessionScope.user_id != null and vo.id == user_id}">
 				<input type="button" value="수정" onclick="location.href='reqBoard_modify.reqBoard?rbno=${vo.rbno}&id=${vo.id}'">&nbsp;&nbsp;
 				</c:if>
 				<c:if test="${sessionScope.user_teacher == null}">
