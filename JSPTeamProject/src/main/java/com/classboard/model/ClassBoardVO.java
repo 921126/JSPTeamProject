@@ -9,18 +9,20 @@ public class ClassBoardVO {
 	private String title;
 	private String content;
 	private Timestamp regdate;
+	private String classNo;
 	
 	public ClassBoardVO() {
 		super();
 	}
 
-	public ClassBoardVO(int cbno, String id, String title, String content, Timestamp regdate) {
+	public ClassBoardVO(int cbno, String id, String title, String content, Timestamp regdate, String ClassNo) {
 		super();
 		this.cbno = cbno;
 		this.id = id;
 		this.title = title;
 		this.content = content;
 		this.regdate = regdate;
+		this.classNo = ClassNo;
 	}
 
 	public int getCbno() {
@@ -63,11 +65,20 @@ public class ClassBoardVO {
 		this.regdate = regdate;
 	}
 
+	public String getClassNo() {
+		return classNo;
+	}
+
+	public void setClassNo(String classNo) {
+		this.classNo = classNo;
+	}
+
 	@Override
 	public String toString() {
 		return "ClassBoardVO [cbno=" + cbno + ", id=" + id + ", title=" + title + ", content=" + content + ", regdate="
-				+ regdate + "]";
+				+ regdate + ", classNo=" + classNo + "]";
 	}
+
 	
 	
 	

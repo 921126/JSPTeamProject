@@ -43,10 +43,10 @@ public class CBAuthFilter implements Filter{
 		String user_teacher = (String)session.getAttribute("user_teacher");
 		String user_classNo = (String)session.getAttribute("user_classNo");
 		
-		System.out.println("글쓴이: "+ writer);
-		System.out.println("세션ID: " + user_id);
-		System.out.println("user_teacher: " + user_teacher);
-		System.out.println("user_classNo: " + user_classNo);
+//		System.out.println("글쓴이: "+ writer);
+//		System.out.println("세션ID: " + user_id);
+//		System.out.println("user_teacher: " + user_teacher);
+//		System.out.println("user_classNo: " + user_classNo);
 		
 		
 		
