@@ -13,6 +13,8 @@ import javax.servlet.http.HttpSession;
 
 import com.shareboard.model.ShareBoardVO;
 import com.shareboard.service.ShareBoardServiceImpl;
+import com.sharecomment.model.ShareCommentVO;
+import com.sharecomment.service.ShareCommentServiceImpl;
 
 @WebServlet("*.sb")
 public class ShareBoardController extends HttpServlet {
@@ -39,6 +41,7 @@ public class ShareBoardController extends HttpServlet {
 		
 		//서비스 객체 생성
 		ShareBoardServiceImpl service = new ShareBoardServiceImpl();
+		ShareCommentServiceImpl commentService = new ShareCommentServiceImpl();
 		
 		//세션 생성
 		HttpSession session = request.getSession();
@@ -64,6 +67,9 @@ public class ShareBoardController extends HttpServlet {
 			ShareBoardVO vo = service.getContent(request, response);
 			request.setAttribute("contVo", vo);
 			
+			ArrayList<ShareCommentVO> list = commentService.getList(request, response);
+			request.setAttribute("comment", list);
+
 			request.getRequestDispatcher("shareboard_content.jsp").forward(request, response);
 		}
 		else if(command.equals("/shareboard/shareboard_modify.sb")) { //글 수정
@@ -94,7 +100,6 @@ public class ShareBoardController extends HttpServlet {
 			service.update(request, response);
 			response.sendRedirect("shareboard_list.sb?sbno=" + request.getParameter("sbno"));
 		}
-		
 		
 	}
 }

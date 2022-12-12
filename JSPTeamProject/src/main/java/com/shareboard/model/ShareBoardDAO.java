@@ -28,7 +28,7 @@ public class ShareBoardDAO {
 	} //ShareBoardDAO.getInstance();
 	
 	//데이터베이스 변수
-	public String URL = "jdbc:oracle:thin:@localhost:1521:xe";
+	public String URL = "jdbc:oracle:thin:@172.30.1.71:1521:xe";
 	public String UID = "prjt";
 	public String UPW = "prjt";
 	

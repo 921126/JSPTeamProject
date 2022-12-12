@@ -41,6 +41,44 @@
 				</c:choose>
 			</td>
 		</tr>
+		
+ 		<c:forEach var="comment" items="${comment }">
+		<tr>
+				<c:if test="${comment.comment_boardNum == contVo.sbno }">
+			<td width="150">
+				<div>
+					${comment.comment_id }<br>
+					<font size="2" color="lightgrey">${comment.comment_boardNum }</font>
+				</div>
+				
+			</td>
+			<td width="550">
+				<div class="text_wrapper">
+					${comment.comment_content }
+				</div>
+			</td>
+			<td width="100">
+				<div id="btn" style="text-align:center;">
+					<c:if test="${comment.comment_id == sessionScope.user_id }">
+						<input type="button" value="삭제" onclick="if(!confirm('댓글을 삭제하시겠습니까?')) {return false} else {location.href='sharecomment_delete.cm?boardNum=${comment.comment_num}&sbno=${contVo.sbno }'}">
+					</c:if>
+				</div>
+			</td>
+				</c:if>
+		</tr>
+		</c:forEach>
 	</table>
+	<div>
+		<form action="commentRegi.cm" method="post">
+			<table> <!-- 댓글 등록창 -->
+					<tr>
+						<td><input type="hidden" name="sbno" value="${contVo.sbno }"></td>
+						<td style="border-bottom:none;" valign="middle">작성자 : ${sessionScope.user_id }</td>
+						<td><input type="text" style="height:40px; width:300px;" name="comment_content" placeholder="댓글을 입력해주세요"></td>
+						<td><br><br><input type="submit" value="작성하기"></td>
+					</tr>
+			</table>
+		</form>
+	</div>
 </body>
 </html>
