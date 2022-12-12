@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공용 게시판 테스트 페이지</title>
+<title>공용 게시판 글 쓰기</title>
 </head>
 <body>
 	<div align="center" class="div_center">

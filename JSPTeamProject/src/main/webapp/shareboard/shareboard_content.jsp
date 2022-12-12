@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 글 조회 테스트</title>
+<title>${contVo.writer } 님의 글</title>
 </head>
 <body>
 	<table>

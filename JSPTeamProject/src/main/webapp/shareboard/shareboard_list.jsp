@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 목록 테스트 페이지</title>
+<title>공용 게시판 목록</title>
 </head>
 <body>
 	<table class="table table-bordered">
