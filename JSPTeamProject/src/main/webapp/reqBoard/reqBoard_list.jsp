@@ -8,7 +8,11 @@
 <body>
 	<div class="container" id="s_left">
 		<h3 align="center">건의 게시판</h3>
-		<a href="${pageContext.request.contextPath}/user/user_mypage.jsp" title="HOME으로 돌아가기">[ HOME ]</a><hr>
+		<a href="${pageContext.request.contextPath}/shareboard/shareboard_list.sb" title="중앙정보회원 전체 사용가능합니다.">[공용게시판]</a><hr>
+		<a href="${pageContext.request.contextPath}/classboard/classboard_list.classboard" title="같은반 회원만 사용가능합니다.">[반전용게시판]</a><hr>
+		<a href="${pageContext.request.contextPath}/JobBoard/JobBoard_list.jobboard" title="선생님이 작성한 취업관련게시글 확인가능합니다.">[취업게시판]</a><hr>
+		<a href="${pageContext.request.contextPath}/reqBoard/reqBoard_list.reqBoard" title="학생들의 고충&불편사항">[건의사항]</a><hr>
+		<a href="${pageContext.request.contextPath}/user/user_mypage.user" title="HOME으로 돌아가기">[ HOME ]</a><hr>
 	</div>
 	
 	<div id="content">
