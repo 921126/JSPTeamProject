@@ -74,12 +74,14 @@ public class ShareBoardController extends HttpServlet {
 			request.getRequestDispatcher("shareboard_modify.jsp").forward(request, response);
 		}
 		else if(command.equals("/shareboard/shareboard_delete.sb")) { //글 삭제
+			
+			
 			int result = service.delete(request, response);
 			String msg = "";
 			if(result == 1) { //삭제 성곰
-				msg = "삭제 성공";
+				msg = "삭제되었습니다";
 			} else { //실패
-				msg = "실패";
+				msg = "삭제 실패";
 			}
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out = response.getWriter();

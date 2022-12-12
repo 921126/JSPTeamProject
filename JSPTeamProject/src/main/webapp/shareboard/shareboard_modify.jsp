@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>글 수정 테스트 페이지</title>
+<title>글 수정</title>
 </head>
 <body>
 	<div align="center" class="div_center">

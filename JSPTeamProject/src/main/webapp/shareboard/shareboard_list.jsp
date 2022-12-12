@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 목록 테스트 페이지</title>
+<title>공용 게시판 목록</title>
 </head>
 <body>
 	<table class="table table-bordered">
@@ -36,6 +36,7 @@
 					<form action="" class="form-inline">
 						<div class="form-group">
 							<input type="button" value="글 작성" class="btn btn-default" onclick="location.href='shareboard_write.sb'">
+							<input type="button" value="메인" class="btn btn-default" onclick="location.href='/JSPTeamProject/user/user_mypage.user'">
 						</div>
 					</form>
 				</td>
