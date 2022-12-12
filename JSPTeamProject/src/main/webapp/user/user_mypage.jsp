@@ -33,7 +33,7 @@
 	<p style="width: 700px;">
 		<div>
 		<a href="user_login.user">[로그아웃]</a>
-		<a href="">[정보수정]</a>
+		<a href="user_info.user">[정보수정]</a>
 		</div>
 	</p>	
 		</div>

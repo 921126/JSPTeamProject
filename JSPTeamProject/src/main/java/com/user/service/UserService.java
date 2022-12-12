@@ -14,5 +14,5 @@ public interface UserService {
 	public UserVO getInfo(HttpServletRequest request, HttpServletResponse response);
 
 	//회원정보수정
-	public void update(HttpServletRequest request, HttpServletResponse response);
+	public UserVO update(HttpServletRequest request, HttpServletResponse response);
 }
