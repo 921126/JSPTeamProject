@@ -23,7 +23,7 @@
 		</tr>
 		<tr>
 			<td>작성자</td>
-			<td>${vo.id },${sessionScope. }</td>
+			<td>${vo.id }</td>
 			<td>작성일</td>
 			<td ><fmt:formatDate value="${vo.regdate}" pattern = "yyyy-MM-dd HH시mm분ss초"/></td>
 		</tr>
@@ -40,8 +40,11 @@
 		<tr>
 			<td colspan="4" align="center">
 				<input type="button" value="목록" onclick="location.href='classboard_list.classboard'">&nbsp;&nbsp;
-				<c:if test="${sessionScope.user_id != null }">
+				<c:if test="${sessionScope.user_id == vo.id}">
 				<input type="button" value="수정" onclick="location.href='classboard_modify.classboard?cbno=${vo.cbno}&writer=${vo.id }'">&nbsp;&nbsp;
+				<input type="button" value="삭제" onclick="location.href='classboard_delete.classboard?cbno=${vo.cbno}&writer=${vo.id }'">&nbsp;&nbsp;
+				</c:if>
+				<c:if test="${sessionScope.user_teacher == null }">
 				<input type="button" value="삭제" onclick="location.href='classboard_delete.classboard?cbno=${vo.cbno}&writer=${vo.id }'">&nbsp;&nbsp;
 				</c:if>
 			</td>
