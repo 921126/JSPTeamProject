@@ -106,7 +106,7 @@ public class reqBoardDAO {
 	public reqBoardVO getContent(String bno) {
 		
 		reqBoardVO vo = null;
-		String sql = "select * from board where bno = ?";
+		String sql = "select * from reqboard where rbno = ? ";
 		
 		try {
 			
@@ -122,13 +122,13 @@ public class reqBoardDAO {
 			
 			if(rs.next()) {
 				
-				int bno2 = rs.getInt("bno");
+				int rbno = rs.getInt("rbno");
 				String id = rs.getString("id");
 				String title = rs.getString("title");
 				String content = rs.getString("content");
-				Timestamp regdate = rs.getTimestamp("redgate");
+				Timestamp regdate = rs.getTimestamp("regdate");
 				
-				vo = new reqBoardVO(bno2, id, title, content, regdate);
+				vo = new reqBoardVO(rbno, id, title, content, regdate);
 			}
 
 		} catch (Exception e) {
@@ -170,7 +170,7 @@ public class reqBoardDAO {
 	}
 
 	//5. 글삭제
-	public void delete(String rbno) {
+	public int delete(String rbno) {
 		
 		String sql = "delete from reqboard where rbno =?";
 		
@@ -184,7 +184,9 @@ public class reqBoardDAO {
 			pstmt.setString(1, rbno);
 			
 			//실행
-			pstmt.executeUpdate();
+			int result = pstmt.executeUpdate(); //성공1 실패0
+			
+			return result;
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -192,6 +194,8 @@ public class reqBoardDAO {
 		} finally {
 			Util.close(conn, pstmt, rs);
 		}
+		
+		return 0;
 		
 	}
 

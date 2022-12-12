@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -61,25 +62,47 @@ public class reqBoardController extends HttpServlet {
 			request.setAttribute("list", list); //목록화면에 데이터 뿌려주기위해 request사용
 			
 			request.getRequestDispatcher("/reqBoard/reqBoard_list.jsp").forward(request, response);
-		}else if(command.equals("/reaBoard/reqBoard_content.reqBoard")) { //상세화면
+		}else if(command.equals("/reqBoard/reqBoard_content.reqBoard")) { //상세화면
 			
+			//글정보 가져오기
 			reqBoardVO vo = service.getContent(request, response);
 			request.setAttribute("vo", vo);
 			
-			request.getRequestDispatcher("reqBoard_content.jsp").forward(request, response);
+			request.getRequestDispatcher("/reqBoard/reqBoard_content.jsp").forward(request, response);
+			
 		}else if(command.equals("/reqBoard/reqBoard_modify.reqBoard")) { //수정화면
 			
+			//글정보 가져오기
 			reqBoardVO vo = service.getContent(request, response);
 			request.setAttribute("vo", vo);
 			
-			request.getRequestDispatcher("reaBoard_modify.jsp").forward(request, response);
+			request.getRequestDispatcher("/reqBoard/reqBoard_modify.jsp").forward(request, response);
+			
 		}else if(command.equals("/reqBoard/reqBoard_Form.reqBoard")) { //수정완료했다면
 			
 			service.update(request, response);
 			response.sendRedirect("reqBoard_content.reqBoard?rbno=" +request.getParameter("rbno"));
+			
 		}else if(command.equals("/reqBoard/reqBoard_delete.reqBoard")) { //삭제요청
 			
-			service.delete(request, response);
+			int result = service.delete(request, response);
+			
+			String msg = "";
+			
+			if(result == 1) { //삭제성공
+				
+				msg = "글을 삭제하였습니다.";
+			}else { //삭제실패
+				msg = "글 삭제에 실패하였습니다.";
+			}
+			
+			//out객체를 이용해서 화면에 스크립트를 작성해서 보냄
+			response.setContentType("text/html; charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('"+ msg +"');");
+			out.println("location.href='reqBoard_list.reqBoard';");
+			out.println("</script>");
 			
 		}
 

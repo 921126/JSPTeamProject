@@ -16,7 +16,6 @@
 		<table class="table table-bordered">
 			<thead>
 				<tr>
-					<th>순서</th>
 					<th>글 번호</th>
 					<th>작성자</th>
 					<th>제목</th>
@@ -32,7 +31,7 @@
 					<td>
 					<a href="reqBoard_content.reqBoard?rbno=${vo.rbno}">${vo.title }</a>
 					</td>
-					<td><fmt:formatDate value ="${vo.regdate}" pattern="yyyy-MM-dd HH시mm분 ss초"/></td>
+					<td><fmt:formatDate value ="${vo.regdate}" pattern="yyyy-MM-dd HH시mm분"/></td>
 				</tr>
 				</c:forEach>
 			</tbody>

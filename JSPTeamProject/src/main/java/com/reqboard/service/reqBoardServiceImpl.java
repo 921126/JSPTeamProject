@@ -36,7 +36,6 @@ public class reqBoardServiceImpl implements reqBoardService{
 		
 		String rbno = request.getParameter("rbno");
 		
-		
 		reqBoardDAO dao = reqBoardDAO.getInstance();
 		reqBoardVO vo = dao.getContent(rbno);
 		
@@ -54,11 +53,13 @@ public class reqBoardServiceImpl implements reqBoardService{
 		
 	}
 
-	public void delete(HttpServletRequest request, HttpServletResponse response) {
+	public int delete(HttpServletRequest request, HttpServletResponse response) {
 		
 		String rbno = request.getParameter("rbno");
 		reqBoardDAO dao = reqBoardDAO.getInstance();
-		dao.delete(rbno);
+		int result = dao.delete(rbno);
+		
+		return result;
 	}
 
 }

@@ -22,5 +22,5 @@ public interface reqBoardService {
 	public void update(HttpServletRequest request, HttpServletResponse response);
 	
 	//글삭제
-	public void delete(HttpServletRequest request, HttpServletResponse response);
+	public int delete(HttpServletRequest request, HttpServletResponse response);
 }
