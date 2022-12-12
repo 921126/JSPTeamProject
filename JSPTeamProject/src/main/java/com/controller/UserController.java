@@ -44,13 +44,14 @@ public class UserController extends HttpServlet {
 		UserServiceImpl service = new UserServiceImpl();
 		HttpSession session = request.getSession(); //자바에서 세션얻기
 	
+		UserVO vo = new UserVO();
 		
 		if(command.equals("/user/user_login.user")) { //로그인화면
 			
 			request.getRequestDispatcher("user_login.jsp").forward(request, response);
 		}else if(command.equals("/user/login_Form.user")) { //로그인요청
 			
-			UserVO vo = service.login(request, response);
+			vo = service.login(request, response);
 			
 			if(vo == null) { //로그인실패 + 추후 수정수정
 				request.setAttribute("msg", "우리 학원 사람이 아닌거같은데");
@@ -64,13 +65,35 @@ public class UserController extends HttpServlet {
 				session.setAttribute("user_gender", vo.getGender());
 				session.setAttribute("user_classNo", vo.getClassNo());
 				session.setAttribute("user_teacher", vo.getTeacher());
-				System.out.println(vo.getTeacher());
 				//페이지 이동
 				response.sendRedirect("user_mypage.user");//컨트롤러 태우기
 				
 			}
 		}else if(command.equals("/user/user_mypage.user")) {
+			
 			request.getRequestDispatcher("user_mypage.jsp").forward(request, response);
+			
+		
+		//정보수정
+		}else if(command.equals("/user/user_info.user")) {
+			
+			vo = service.getInfo(request, response);
+			request.setAttribute("vo", vo);
+			
+			request.getRequestDispatcher("user_info.jsp").forward(request, response);
+			
+		}else if(command.equals("/user/updateForm.user")) {
+			
+			vo = service.update(request, response);
+			session.setAttribute("user_id", vo.getId());
+			session.setAttribute("user_pw", vo.getPw());
+			session.setAttribute("user_name", vo.getName());
+			session.setAttribute("user_age", vo.getAge());
+			session.setAttribute("user_gender", vo.getGender());
+			session.setAttribute("user_classNo", vo.getClassNo());
+			session.setAttribute("user_teacher", vo.getTeacher());
+			
+			request.getRequestDispatcher("user_mypage.user").forward(request, response);
 		}
 	
 	}

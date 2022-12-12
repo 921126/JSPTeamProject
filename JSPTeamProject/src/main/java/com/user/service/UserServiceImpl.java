@@ -32,8 +32,28 @@ public class UserServiceImpl implements UserService{
 		//dao작업
 		UserDAO dao = UserDAO.getInstance();
 		UserVO vo = dao.getInfo(id);
-		
 		return vo;
+	}
+
+	@Override
+	public UserVO update(HttpServletRequest request, HttpServletResponse response) {
+		
+		String id = request.getParameter("id");
+		String pw = request.getParameter("pw");
+		String name = request.getParameter("name");
+		String age = request.getParameter("age");
+		String gender = request.getParameter("gender");
+		String classNo = request.getParameter("classNo");
+		String teacher = request.getParameter("teacher");
+		
+		//신규정보 업데이트
+		UserDAO udao = UserDAO.getInstance();
+		udao.update(id, pw, name, age, classNo);
+		
+		//신규정보를 가지고 나가야하므로
+		UserVO vo = udao.getInfo(id);
+		return vo;
+		
 	}
 	
 

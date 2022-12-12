@@ -46,9 +46,9 @@ public class ClassBoardDAO {
 	
 	
 	//글 작성 메소드
-	public void regist(String id, String title, String content) {
+	public void regist(String id, String title, String content, String classNo) {
 		
-		String sql = "insert into classBoard values(classBoard_seq.nextval, ?, ?, ?, sysdate)";
+		String sql = "insert into classBoard values(classBoard_seq.nextval, ?, ?, ?, sysdate, ?)";
 		
 		try {
 			
@@ -60,6 +60,7 @@ public class ClassBoardDAO {
 			pstmt.setString(1, id);
 			pstmt.setString(2, title);
 			pstmt.setString(3, content);
+			pstmt.setString(4, classNo);
 			
 			//crud pstmt 
 			pstmt.executeUpdate(); //성공시 1반환, 실패시 0반환. 하지만 값 받지 않음.
@@ -70,18 +71,21 @@ public class ClassBoardDAO {
 			Util.close(conn, pstmt, rs);
 		}
 		
-	}
+	}//글작성메소드 끝.
 	
 	//리스트페이지 글 조회 메소드 -> 반 게시판 리스트 페이지에 출력하게 될것.
-	public ArrayList<ClassBoardVO> getList(){
+	public ArrayList<ClassBoardVO> getList(String classNo){
 		
 		ArrayList<ClassBoardVO> list = new ArrayList<>();
 		
-		String sql = "select * from classboard order by CBno desc";
+		String sql = "select * from classboard where classNo =? order by CBno desc";
 		
 		try {
 			conn = DriverManager.getConnection(URL,UID,UPW);
 			pstmt = conn.prepareStatement(sql);
+			
+			//sql문 완성
+			pstmt.setString(1, classNo);
 			
 			rs = pstmt.executeQuery();
 			
@@ -94,6 +98,7 @@ public class ClassBoardDAO {
 				vo.setTitle(rs.getString("title"));
 				vo.setContent(rs.getString("content"));
 				vo.setRegdate(rs.getTimestamp("regdate"));
+				vo.setClassNo(rs.getString("classNo"));
 				
 				list.add(vo);
 				
@@ -106,7 +111,7 @@ public class ClassBoardDAO {
 		}
 		
 		return list;
-	}
+	}//list 메서드 끝
 	
 	//글 내용(content) 확인 메소드
 	public ClassBoardVO getContent(String cbno) {

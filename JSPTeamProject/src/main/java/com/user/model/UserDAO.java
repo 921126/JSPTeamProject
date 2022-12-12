@@ -123,4 +123,32 @@ public class UserDAO {
 		
 		return vo;
 	}
+	
+	//3. 정보수정 메서드
+	public void update(String id, String pw, String name, String age, String classNo) {
+		
+		String sql = "update users set pw =? ,name=? ,age =? ,classNo=? where id =?";
+		
+		try {
+			
+			conn = DriverManager.getConnection(URL, UID, UPW);
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, pw);
+			pstmt.setString(2, name);
+			pstmt.setString(3, age);
+			pstmt.setString(4, classNo);
+			pstmt.setString(5, id);
+			
+			rs = pstmt.executeQuery();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			System.out.println("회원정보수정 실패");
+		}finally {
+			Util.close(conn, pstmt, rs);
+		}
+	}
+	
 }

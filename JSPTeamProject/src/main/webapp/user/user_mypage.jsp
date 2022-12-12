@@ -11,7 +11,7 @@
 		<a href="${pageContext.request.contextPath}/classboard/classboard_list.classboard" title="같은반 회원만 사용가능합니다.">[반전용게시판]</a><hr>
 		<a href="${pageContext.request.contextPath}/JobBoard/JobBoard_list.jobboard" title="선생님이 작성한 취업관련게시글 확인가능합니다.">[취업게시판]</a><hr>
 		<a href="${pageContext.request.contextPath}/reqBoard/reqBoard_list.reqBoard" title="학생들의 고충&불편사항">[건의사항]</a><hr>
-		<a href="">[HOME]</a>
+		<a href="${pageContext.request.contextPath}/user/user_mypage.user">[HOME]</a>
 		</div>
 	</div>
 			
@@ -33,7 +33,7 @@
 	<p style="width: 700px;">
 		<div>
 		<a href="user_login.user">[로그아웃]</a>
-		<a href="">[정보수정]</a>
+		<a href="user_info.user">[정보수정]</a>
 		</div>
 	</p>	
 		</div>
