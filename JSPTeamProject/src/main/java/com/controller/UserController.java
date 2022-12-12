@@ -65,12 +65,12 @@ public class UserController extends HttpServlet {
 				session.setAttribute("user_gender", vo.getGender());
 				session.setAttribute("user_classNo", vo.getClassNo());
 				session.setAttribute("user_teacher", vo.getTeacher());
-				System.out.println(vo.getTeacher());
 				//페이지 이동
 				response.sendRedirect("user_mypage.user");//컨트롤러 태우기
 				
 			}
 		}else if(command.equals("/user/user_mypage.user")) {
+			
 			request.getRequestDispatcher("user_mypage.jsp").forward(request, response);
 			
 		
@@ -81,6 +81,19 @@ public class UserController extends HttpServlet {
 			request.setAttribute("vo", vo);
 			
 			request.getRequestDispatcher("user_info.jsp").forward(request, response);
+			
+		}else if(command.equals("/user/updateForm.user")) {
+			
+			vo = service.update(request, response);
+			session.setAttribute("user_id", vo.getId());
+			session.setAttribute("user_pw", vo.getPw());
+			session.setAttribute("user_name", vo.getName());
+			session.setAttribute("user_age", vo.getAge());
+			session.setAttribute("user_gender", vo.getGender());
+			session.setAttribute("user_classNo", vo.getClassNo());
+			session.setAttribute("user_teacher", vo.getTeacher());
+			
+			request.getRequestDispatcher("user_mypage.user").forward(request, response);
 		}
 	
 	}
