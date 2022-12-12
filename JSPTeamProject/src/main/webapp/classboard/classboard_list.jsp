@@ -11,7 +11,7 @@
 
 	<div class="container" id="s_left">
 		<h3 align="center">${sessionScope.user_classNo }반 게시판</h3>
-		
+		<a href="${pageContext.request.contextPath}/user/user_mypage.jsp" title="HOME으로 돌아가기">[ HOME ]</a><hr>
 		<h3>${vo.cbno }</h3>
 	</div>
 		
