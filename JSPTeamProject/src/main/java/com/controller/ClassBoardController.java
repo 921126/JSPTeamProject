@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.classboard.model.ClassBoardVO;
-import com.classboard.service.CBService;
 import com.classboard.service.CBServiceImpl;
 
 @WebServlet("*.classboard")
@@ -38,9 +37,12 @@ public class ClassBoardController extends HttpServlet {
 		String command = uri.substring(path.length());
 		
 		//서비스 객체 생성
-		CBService sv = new CBServiceImpl();
+		CBServiceImpl sv = new CBServiceImpl();
 		//세션 생성
 		HttpSession session = request.getSession(); 
+		
+		//요청경로 확인
+		System.out.println("요청경로>" + command);
 		
 		switch (command) {
 		case "/classboard/classboard_write.classboard": {//글등록 페이지
@@ -56,7 +58,6 @@ public class ClassBoardController extends HttpServlet {
 		}
 		case "/classboard/registForm.classboard": {//글등록 처리
 			
-			CBService service = new CBServiceImpl();
 			sv.regist(request, response);
 			
 			response.sendRedirect("classboard_list.classboard");
@@ -90,7 +91,7 @@ public class ClassBoardController extends HttpServlet {
 			ClassBoardVO vo = sv.getContent(request, response);
 			request.setAttribute("vo", vo);
 			//forward방식으로 vo 값을 가지고 modify(수정화면) 페이지로 넘어감.
-			request.getRequestDispatcher("classboard_content.jsp").forward(request, response);
+			request.getRequestDispatcher("classboard_modify.jsp").forward(request, response);
 			
 			break;
 		}

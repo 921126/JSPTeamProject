@@ -1,29 +1,33 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 
 
-<!-- ¿ì¼± ¹Ùµğ¸¸ ÀÛ¾÷ÇÏ±â -->
+<!-- ìš°ì„  ë°”ë””ë§Œ ì‘ì—…í•˜ê¸° -->
 <body>
 <!-- end header -->
 
 	<div class="container">
-		<h3>¹İ °Ô½ÃÆÇ</h3>
+		<h3>ë°˜ ê²Œì‹œíŒ</h3>
+		
+		<h3>${vo.cbno }</h3>
 		
 		<table class="table table-borderd">
 			<thead>
 				<tr>
-					<th>¼ø¼­</th>
-					<th>±Û ¹øÈ£</th>
-					<th>ÀÛ¼ºÀÚ</th>
-					<th>Á¦¸ñ</th>
-					<th>³¯Â¥</th>
+					<th>ìˆœì„œ</th>
+					<th>ê¸€ ë²ˆí˜¸</th>
+					<th>ì‘ì„±ì</th>
+					<th>ì œëª©</th>
+					<th>ë‚ ì§œ</th>
 				</tr>
 			</thead>
 			
@@ -34,9 +38,9 @@
 					<td>${vo.cbno }</td>
 					<td>${vo.id }</td>
 					<td>
-						<a href="classboard_content.board?bno=${vo.cbno}">${vo.title }</a>
+						<a href="classboard_content.classboard?cbno=${vo.cbno}">${vo.title }</a>
 					</td>
-					<td><fmt:formatDate value="${vo.regdate }" pattern = "yyyy-MM-dd HH½ÃmmºĞssÃÊ"/></td>
+					<td><fmt:formatDate value="${vo.regdate}" pattern = "yyyy-MM-dd HHì‹œmmë¶„ssì´ˆ"/></td>
 				</tr>
 				</c:forEach>
 			</tbody>
@@ -46,9 +50,9 @@
 					<td colspan="6" align="right">
 						<form action="" class="form-inline" >
 						  <div class="form-group">
-						    <input type="text" name="search" placeholder="Á¦¸ñ°Ë»ö" class="form-control" >
-						  	<input type="submit" value="°Ë»ö" class="btn btn-default">
-							<input type="button" value="±Û ÀÛ¼º" class="btn btn-default" onclick="location.href='classboard_write.classboard'">
+						    <input type="text" name="search" placeholder="ì œëª©ê²€ìƒ‰" class="form-control" >
+						  	<input type="submit" value="ê²€ìƒ‰" class="btn btn-default">
+							<input type="button" value="ê¸€ ì‘ì„±" class="btn btn-default" onclick="location.href='classboard_write.classboard'">
 						  </div>
 						</form> 
 					</td>

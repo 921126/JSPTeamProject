@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.classboard.model.ClassBoardDAO;
 import com.classboard.model.ClassBoardVO;
@@ -13,7 +14,9 @@ public class CBServiceImpl implements CBService {
 	//작성글 등록 메서드
 	public void regist(HttpServletRequest request, HttpServletResponse response) {
 		
-		String id = request.getParameter("id");
+		HttpSession session = request.getSession();
+		
+		String id = (String)session.getAttribute("user_id");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		
@@ -41,7 +44,7 @@ public class CBServiceImpl implements CBService {
 	public ClassBoardVO getContent(HttpServletRequest request, HttpServletResponse response) {
 		
 		//해당 글 조회를 위해서 글 번호가 필요
-		String cbno = (String)request.getAttribute("cbno");
+		String cbno = request.getParameter("cbno");
 		
 		//dao 생성
 		ClassBoardDAO dao = ClassBoardDAO.getInstance();

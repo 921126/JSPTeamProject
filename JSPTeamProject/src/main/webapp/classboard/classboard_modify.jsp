@@ -1,56 +1,56 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
 
-<div align="center" class="div_center">
-	<h3>°Ô½ÃÆÇ ±Û ¼öÁ¤ ÆäÀÌÁö</h3>
-	<hr>
+<body>
+<!-- end header -->
+
+<div>
+	<h3>ê²Œì‹œíŒ ê¸€ ìˆ˜ì • í˜ì´ì§€</h3>
+	<hr> <!-- hrì€ ì„ ì„ ê·¸ì–´ì¤€ë‹¤. -->
 	
 	<form action="updateForm.classboard" method="post">
-		
-		<table border="1" width="500">
-			
-			<%--È­¸é¿¡ º¸ÀÏ ÇÊ¿ä´Â ¾ø´Âµ¥, µ¥ÀÌÅÍ¸¦ º¸³»¾ß ÇÏ´Â °æ¿ì hidden ÅÂ±×¸¦ »ç¿ëÇÕ´Ï´Ù. --%>
-			
+		<table border="1" width="500"> <!-- widthëŠ” ê°€ë¡œ ë„ˆë¹„ ì‚¬ì´ì¦ˆë¥¼ ì§€ì •í•´ì¤Œ -->
 			<tr>
-				<td>±Û ¹øÈ£</td>
-				<td>${vo.bno }
-					<input type="hidden" name="cbno" value="${vo.cbno}">
-				</td>
-			</tr>
-			<tr>
-				<td>ÀÛ¼ºÀÚ</td>
-				<td><input type="text" name="writer" value="${vo.id}" readonly></td>
-			</tr>
-			<tr>
-				<td>±Û Á¦¸ñ</td>
+				<td>ê¸€ ë²ˆí˜¸</td>
 				<td>
-					<input type="text" name="title" value="${vo.title }">
+					<input type="hidden" name="cbno" value="${vo.cbno }">
 				</td>
 			</tr>
 			<tr>
-				<td>±Û ³»¿ë</td>
-				<td>
-					<textarea rows="10" style="width: 95%;" name="content">${vo.content }</textarea>
-				</td>
+				<td>ì‘ì„±ì</td>
+				<td><input type="text" name="writer" value="${vo.id }" readonly></td>
+			</tr>
+		 	<tr>
+		 		<td>ê¸€ ì œëª©</td>
+		 		<td>
+		 			<input type="text" name="title" value="${vo.title }">
+		 		</td>
+		 	</tr>
+		 	<tr>
+		 		<td>ê¸€ ë‚´ìš©</td>
+		 		<td>
+		 			<textarea rows="10" style="width:  95%;" name="content">${vo.content }</textarea>
+		 		</td>	
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="¼öÁ¤ ÇÏ±â" onclick="">&nbsp;&nbsp;
-					<input type="button" value="¸ñ·Ï" onclick="location.href='classboard_list.classboard'">        
+					<input type="submit" value="ìˆ˜ì • í•˜ê¸°" onclick="locationi.href='updateForm.classboard?writer=${vo.id}'">&nbsp;&nbsp;
+					<input type="button" value="ëª©ë¡" onclick="location.href='classboard_list.classboard'">
 				</td>
 			</tr>
-			
 		</table>
 	</form>
 	
 </div>
 
+<!-- footer -->
+<!-- /footer -->
 </body>
+
 </html>
