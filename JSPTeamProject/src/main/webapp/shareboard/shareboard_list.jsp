@@ -36,6 +36,7 @@
 					<form action="" class="form-inline">
 						<div class="form-group">
 							<input type="button" value="글 작성" class="btn btn-default" onclick="location.href='shareboard_write.sb'">
+							<input type="button" value="메인" class="btn btn-default" onclick="location.href='/JSPTeamProject/user/user_mypage.user'">
 						</div>
 					</form>
 				</td>

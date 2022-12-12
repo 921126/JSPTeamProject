@@ -128,18 +128,12 @@ public class ShareBoardDAO {
 	//글 삭제 메소드
 	public int delete(String sbno) {
 		int result = 0;
-		
 		String sql = "delete from shareboard where sbno = ?";
-		
-		System.out.println("1");
 		try {
 			conn = DriverManager.getConnection(URL, UID, UPW);
-			System.out.println("2");
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, sbno);
-			System.out.println("3");
 			result = pstmt.executeUpdate();
-			System.out.println("4");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
