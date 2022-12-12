@@ -1,41 +1,37 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>    
 
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-</head>
+<%@ include file="../include/header.jsp" %>
 <body>
 
-	<div class="container">
-		<h3>Ãë¾÷ °Ô½ÃÆÇ</h3>
-
+	<div class="container" id="s_left">
+		<h3 align="center">ì·¨ì—… ê²Œì‹œíŒ</h3>
+	</div>
+	
+	<div id="content">
 		<table class="table table-bordered">
 			<thead>
 				<tr>
-					<th>¼ø¼­</th>
-					<th>±Û ¹øÈ£</th>
-					<th>ÀÛ¼ºÀÚ</th>
-					<th>Á¦¸ñ</th>
-					<th>³¯Â¥</th>
-					
+					<th>ê¸€ë²ˆí˜¸</th>
+					<th>ì‘ì„±ì</th>
+					<th>ì œëª©</th>
+					<th>ë‚ ì§œ</th>
 				</tr>
+			
 			</thead>
-
+			
 			<tbody>
 				<c:forEach var="i" items="${joblist }" varStatus="num">
 				<tr>
-					<td>${num.count }</td>
 					<td>${i.jno }</td>
 					<td>${i.id }</td>
 					<td>
 						<a href="JobBoard_content.jobboard?jno=${i.jno }">${i.title }</a>
 					</td>
-					<td><fmt:formatDate value="${i.regdate }" pattern="yyyy-MM-dd HH½Ã mmºĞ ssÃÊ"/></td>
+					<td><fmt:formatDate value="${i.regdate }" pattern="yyyy-MM-dd HHì‹œ mmë¶„ ssì´ˆ"/></td>
 					
 				</tr>
 				</c:forEach>
@@ -46,17 +42,17 @@
 					<td colspan="6" align="right">
 						<form action="" class="form-inline" >
 						  <div class="form-group">
-						    <input type="text" name="search" placeholder="Á¦¸ñ°Ë»ö" class="form-control" >
-						  	<input type="submit" value="°Ë»ö" class="btn btn-default">
-							<input type="button" value="±Û ÀÛ¼º" class="btn btn-default" onclick="location.href='JobBoard_write.jobboard'">
+						    <input type="text" name="search" placeholder="ì œëª©ê²€ìƒ‰" class="form-control" >
+						  	<input type="submit" value="ê²€ìƒ‰" class="btn btn-default">
+							<input type="button" value="ê¸€ ì‘ì„±" class="btn btn-default" onclick="location.href='JobBoard_write.jobboard'">
 						  </div>
 						</form> 
 					</td>
 				</tr>
+
 			</tbody>
 		
 		</table>
 	</div>
-	
 </body>
 </html>

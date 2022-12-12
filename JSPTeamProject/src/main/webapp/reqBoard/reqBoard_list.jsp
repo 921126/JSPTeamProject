@@ -4,19 +4,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
 
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
+<%@ include file="../include/header.jsp" %>
 <body>
-	<div class="container">
-		<h3>건의게시판</h3>
-
+	<div class="container" id="s_left">
+		<h3 align="center">건의 게시판</h3>
+	</div>
+	
+	<div id="content">
 		<table class="table table-bordered">
 			<thead>
 				<tr>
-					<th>글 번호</th>
+					<th>글번호</th>
 					<th>작성자</th>
 					<th>제목</th>
 					<th>날짜</th>
@@ -24,7 +22,7 @@
 			</thead>
 
 			<tbody>
-				<c:forEach var="vo" items="${list}" varStatus="num">
+				<c:forEach var="vo" items="${list }" varStatus="num">
 				<tr>
 					<td>${vo.rbno }</td>
 					<td>${vo.id }</td>
@@ -49,6 +47,6 @@
 			</tbody>
 		
 		</table>
-	</div>
+	</div>	
 </body>
 </html>
