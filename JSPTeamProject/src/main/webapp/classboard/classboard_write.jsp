@@ -16,8 +16,11 @@
 	<div align="center" class="div_center">
 		<h3>게시판 글 작성 페이지</h3>
 		<hr>
-
-		<form action="registForm.classboard" method="post">
+		
+		<!-- 해당 반이 어딘지 작성자에 해당반에대한 정보를 쿼리스트링으로 넘겨줌 -->
+		<form action="registForm.classboard?classNo=${sessionScope.user_classNo}" method="post">
+		
+		
 			<table border="1" width="500">
 				<tr>
 					<td>작성자</td>

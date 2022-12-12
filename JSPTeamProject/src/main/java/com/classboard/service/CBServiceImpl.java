@@ -2,6 +2,7 @@ package com.classboard.service;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -10,6 +11,7 @@ import com.classboard.model.ClassBoardDAO;
 import com.classboard.model.ClassBoardVO;
 
 public class CBServiceImpl implements CBService {
+	
 
 	//작성글 등록 메서드
 	public void regist(HttpServletRequest request, HttpServletResponse response) {
@@ -19,18 +21,26 @@ public class CBServiceImpl implements CBService {
 		String id = (String)session.getAttribute("user_id");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
+		String classNo = request.getParameter("classNo");
+		
+		//classNo 제대로 넘어오는지 확인.
+		System.out.println(classNo);
 		
 		//DAO에서 데이터베이스랑 작업하는 regist메서드 만들고오기.
 		//DAO
 		ClassBoardDAO dao = ClassBoardDAO.getInstance();
-		dao.regist(id, title, content);
+		dao.regist(id, title, content, classNo);
 	}
 
-	//게시판 모든 글 조회 메서드
+	//게시판 모든 글 조회 메서드 , list 페이지
 	public ArrayList<ClassBoardVO> getList(HttpServletRequest request, HttpServletResponse response) {
 		
+		//session 객체 생성
+		HttpSession session = request.getSession();
+		String classNo = (String)session.getAttribute("user_classNo");
+		
 		ClassBoardDAO dao = ClassBoardDAO.getInstance();
-		ArrayList<ClassBoardVO> list = dao.getList();
+		ArrayList<ClassBoardVO> list = dao.getList(classNo);
 		
 		//글 잘 넘어오는지 확인
 //		for(ClassBoardVO vo : list) {
