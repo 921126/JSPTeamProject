@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,8 +30,15 @@
 		<tr>
 			<td colspan="4" align="center">
 				<input type="button" value="목록" onclick="location.href='shareboard_list.sb'">&nbsp;&nbsp;
-				<input type="button" value="수정" onclick="location.href='shareboard_modify.sb?sbno=${contVo.sbno }&writer=${contVo.writer }'">&nbsp;&nbsp;
-				<input type="button" value="삭제" onclick="location.href='shareboard_delete.sb?sbno=${contVo.sbno }&writer=${contVo.writer }'">&nbsp;&nbsp;				
+				<c:choose>
+				<c:when test="${sessionScope.user_id == contVo.writer}">
+					<input type="button" value="수정" onclick="location.href='shareboard_modify.sb?sbno=${contVo.sbno }&writer=${contVo.writer }'">&nbsp;&nbsp;
+					<input type="button" value="삭제" onclick="location.href='shareboard_delete.sb?sbno=${contVo.sbno }&writer=${contVo.writer }'">&nbsp;&nbsp;
+				</c:when>
+				<c:when test="${sessionScope.user_teacher == null }">
+					<input type="button" value="삭제" onclick="location.href='shareboard_delete.sb?sbno=${contVo.sbno }&writer=${contVo.writer }'">&nbsp;&nbsp;
+				</c:when>
+				</c:choose>
 			</td>
 		</tr>
 	</table>

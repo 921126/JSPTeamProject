@@ -44,9 +44,9 @@
 			<td colspan="4" align="center">
 				<input type="button" value="목록" onclick="location.href='JobBoard_list.jobboard'">&nbsp;&nbsp;
 				
-				<c:if test="${sessionScope.user_id != null }">
-				<input type="button" value="수정" onclick="location.href='JobBoard_modify.jobboard?jno=${vo.jno}&writer=${vo.id }' ">&nbsp;&nbsp;
-				<input type="button" value="삭제" onclick="location.href='JobBoard_delete.jobboard?jno=${vo.jno}&writer=${vo.id }' ">&nbsp;&nbsp;
+				<c:if test="${sessionScope.user_teacher == null }">
+				<input type="button" value="수정" onclick="location.href='JobBoard_modify.jobboard?jno=${vo.jno}&id=${vo.id }' ">&nbsp;&nbsp;
+				<input type="button" value="삭제" onclick="location.href='JobBoard_delete.jobboard?jno=${vo.jno}&id=${vo.id }' ">&nbsp;&nbsp;
 				</c:if>
 			</td>
 		</tr>

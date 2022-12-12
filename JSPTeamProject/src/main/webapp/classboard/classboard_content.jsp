@@ -23,7 +23,7 @@
 		</tr>
 		<tr>
 			<td>작성자</td>
-			<td>${vo.id }</td>
+			<td>${vo.id },${sessionScope. }</td>
 			<td>작성일</td>
 			<td ><fmt:formatDate value="${vo.regdate}" pattern = "yyyy-MM-dd HH시mm분ss초"/></td>
 		</tr>
