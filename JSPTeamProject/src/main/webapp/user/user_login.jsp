@@ -25,7 +25,29 @@
 	.button1 {background-color: #4CAF50;}
 	
 
-	input{
+	input[type=text]{
+		width: 300px;
+  		height: 32px;
+		font-size: 15px;
+		border: 0;
+		border-radius: 15px;
+		outline: none;
+		padding-left: 10px;
+		background-color: rgb(233, 233, 233);
+	}
+	
+	input[type=password]{
+		width: 300px;
+  		height: Auto;
+		font-size: 15px;
+		border: 0;
+		border-radius: 15px;
+		outline: none;
+		padding-left: 10px;
+		background-color: rgb(233, 233, 233);
+	}
+	
+		input[type=password]{
 		width: 300px;
   		height: 32px;
 		font-size: 15px;
