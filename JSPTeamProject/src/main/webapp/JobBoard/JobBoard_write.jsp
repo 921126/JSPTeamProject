@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,35 +9,35 @@
 <body>
 	
 	<div align="center" class="div_center">
-	<!-- ±Û ÀÛ¼ºÀº °ü¸®ÀÚ¸¸ °¡´É, ÇÐ»ýÀº ÀÐ±â±â´É¸¸ Ãß°¡ÇØ¼­ ÀÐ±â¸¸ °¡´ÉÇÏ°Ô »ý¼ºÇØ¾ßÇÔ -->
-	<h3>Ãë¾÷°Ô½ÃÆÇ ±Û ÀÛ¼º ÆäÀÌÁö</h3>
+	<!-- ê¸€ ìž‘ì„±ì€ ê´€ë¦¬ìžë§Œ ê°€ëŠ¥, í•™ìƒì€ ì½ê¸°ê¸°ëŠ¥ë§Œ ì¶”ê°€í•´ì„œ ì½ê¸°ë§Œ ê°€ëŠ¥í•˜ê²Œ ìƒì„±í•´ì•¼í•¨ -->
+	<h3>ì·¨ì—…ê²Œì‹œíŒ ê¸€ ìž‘ì„± íŽ˜ì´ì§€</h3>
 	<hr>
 	
 	<form action="registForm.jobboard" method="post">
 		<table border="1" width="500">
 			<tr>
-				<td>ÀÛ¼ºÀÚ</td>
+				<td>ìž‘ì„±ìž</td>
 				<td>
 					<input type="text" name="id" value="${sessionScope.user_id }" size="10" readonly>
 				</td>
 			</tr>
 			<tr>
-				<td>±Û Á¦¸ñ</td>
+				<td>ê¸€ ì œëª©</td>
 				<td>
 					<input type="text" name="title" required>
 				</td>
 			</tr>
 			<tr>
-				<td>±Û ³»¿ë</td>
+				<td>ê¸€ ë‚´ìš©</td>
 				<td>
 					<textarea rows="10" style="width: 95%;" name="content"></textarea>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="ÀÛ¼º ¿Ï·á" onclick="location.href='JobBoard_list.jobboard'">
+					<input type="submit" value="ìž‘ì„± ì™„ë£Œ" onclick="location.href='JobBoard_list.jobboard'">
 					&nbsp;&nbsp;
-					<input type="button" value="¸ñ·Ï" onclick="location.href='JobBoard_list.jobboard'">         
+					<input type="button" value="ëª©ë¡" onclick="location.href='JobBoard_list.jobboard'">         
 				</td>
 			</tr>
 			

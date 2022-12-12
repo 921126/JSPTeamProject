@@ -31,10 +31,9 @@ public class JAuthFilter extends HttpFilter implements Filter {
 		HttpServletResponse res = (HttpServletResponse)response;
 		
 		HttpSession session = req.getSession();
-		String teacher = (String)session.getAttribute("id");
+		String teacher = (String)session.getAttribute("user_teacher");
 		
-		System.out.println(teacher);
-		
+		//담당선생님이 있을경우 학생이므로 작성권한을 없앤다.
 		if(teacher != null) {
 			
 			String path = req.getContextPath();
