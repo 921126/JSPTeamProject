@@ -14,22 +14,22 @@
 			<table border="1" width="500">
 				<tr>
 					<td>글 번호</td>
-					<td><b>${contVo.sbno }</b>
-						<input type="hidden" name="sbno" value="${contVo.sbno }">
+					<td><b>${modiVo.sbno }</b>
+						<input type="hidden" name="sbno" value="${modiVo.sbno }">
 					</td>
 				</tr>
 				<tr>
 					<td>작성자</td>
-					<td><input type="text" name="writer" value="${contVo.writer }" readonly></td>
+					<td><input type="text" name="writer" value="${modiVo.writer }" readonly></td>
 				</tr>
 				<tr>
 					<td>글 제목</td>
-					<td><input type="text" name="title" value="${contVo.title }"></td>
+					<td><input type="text" name="title" value="${modiVo.title }"></td>
 				</tr>
 				<tr>
 					<td>글 내용</td>
 					<td>
-						<textarea rows="10" style="width: 95%;" name="content">${contVo.content }
+						<textarea rows="10" style="width: 95%;" name="content">${modiVo.content }
 						</textarea>
 					</td>
 				</tr>

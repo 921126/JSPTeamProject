@@ -54,6 +54,15 @@ public class ShareBoardServiceImpl implements ShareBoardService {
 		dao.update(sbno, title, content);
 		
 	}
+
+	@Override
+	public int delete(HttpServletRequest request, HttpServletResponse response) {
+		String sbno = request.getParameter("sbno");
+		ShareBoardDAO dao = ShareBoardDAO.getInstance();
+		int result = dao.delete(sbno);
+		
+		return result;
+	}
 	
 	
 	

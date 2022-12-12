@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -59,27 +60,39 @@ public class ShareBoardController extends HttpServlet {
 			
 			request.getRequestDispatcher("shareboard_list.jsp").forward(request, response);
 		}
-		else if(command.equals("/shareboard/shareboard_modify.sb")) { //글 수정
-			//조회한 글에 대한 정보 재활용하기
-			ShareBoardVO vo = service.getContent(request, response);
-			System.out.println(vo.getTitle());
-			request.setAttribute("contVo", vo);
-			
-			request.getRequestDispatcher("shareboard_modify.jsp").forward(request, response);
-		}
-		else if(command.equals("/shareboard/shareboard_delete.sb")) { //글 삭제
-			response.sendRedirect("shareboard_list.sb");
-		}
 		else if(command.equals("/shareboard/shareboard_content.sb")) { //글 조회
 			ShareBoardVO vo = service.getContent(request, response);
 			request.setAttribute("contVo", vo);
 			
 			request.getRequestDispatcher("shareboard_content.jsp").forward(request, response);
 		}
-		else if(command.equals("/shareboard/updateForm.sb")) { //수정한 글 업데이트
+		else if(command.equals("/shareboard/shareboard_modify.sb")) { //글 수정
+			//조회한 글에 대한 정보 재활용하기
+			ShareBoardVO vo = service.getContent(request, response);
+			request.setAttribute("modiVo", vo);
 			
+			request.getRequestDispatcher("shareboard_modify.jsp").forward(request, response);
+		}
+		else if(command.equals("/shareboard/shareboard_delete.sb")) { //글 삭제
+			int result = service.delete(request, response);
+			String msg = "";
+			if(result == 1) { //삭제 성곰
+				msg = "삭제 성공";
+			} else { //실패
+				msg = "실패";
+			}
+			response.setContentType("text/html; charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('" + msg + "')");
+			out.println("location.href='shareboard_list.sb';");
+			out.println("</script>");
+		}
+		else if(command.equals("/shareboard/updateForm.sb")) { //수정한 글 업데이트
+			service.update(request, response);
 			response.sendRedirect("shareboard_list.sb?sbno=" + request.getParameter("sbno"));
 		}
+		
 		
 	}
 }
