@@ -10,42 +10,37 @@
 	<section>
 		<div align="center">
 			<h3>회원정보 수정</h3>
-			<form action="">
+			<form action="updateForm.user" method="post">
 				<table>
 				
 					<tr>
 						<td>아이디 : </td>
-						<td>${vo.id }</td>
 						<td><input type="text" name="id" value="${vo.id }" ></td>
 					</tr>
 					
 					<tr>
 						<td>비밀번호 : </td>
-						<td>${vo.pw }</td>
 						<td><input type="password" name="pw" placeholder="비밀번호를 수정하세요."></td>
 					</tr>
 					
 					<tr>
 						<td>이름 : </td>
-						<td>${vo.name }</td>
-						<td><input type="text" name="name" value="${vo.name }" pattern="[가-힣]"></td>
+						<td><input type="text" name="name" value="${vo.name }" pattern="[가-힣]{3,}"></td>
 					</tr>
 					
 					<tr>
 						<td>나이 : </td>
-						<td>${vo.age }</td>
-						<td><input type="text" name="age" value="${vo.age }" pattern="[1-9]"></td>
+						<td><input type="text" name="age" value="${vo.age }" pattern="^[0-9]+$"></td>
 					</tr>
 					
 					<tr>
 						<td>반 번호 : </td>
-						<td>${classNo }</td>
-						<td><input type="text" name="classNo" value="${vo.classNo }"></td>
+						<td><input type="text" name="classNo" value="${vo.classNo }" pattern="^[0-9]+$"></td>
 					</tr>
 					
 				</table>
 				
-					<input type="submit" value="정보수정">
+					<input type="submit" value="정보수정" onclick="location.href='user_mypage.user'">
 					<input type="button" value="마이페이지" onclick="location.href='user_mypage.user'">
 			</form>
 		</div>

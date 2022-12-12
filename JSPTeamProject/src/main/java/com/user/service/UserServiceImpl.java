@@ -32,13 +32,12 @@ public class UserServiceImpl implements UserService{
 		//dao작업
 		UserDAO dao = UserDAO.getInstance();
 		UserVO vo = dao.getInfo(id);
-		
 		return vo;
 	}
 
 	@Override
-	public void update(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+	public UserVO update(HttpServletRequest request, HttpServletResponse response) {
+		
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		String name = request.getParameter("name");
@@ -47,11 +46,14 @@ public class UserServiceImpl implements UserService{
 		String classNo = request.getParameter("classNo");
 		String teacher = request.getParameter("teacher");
 		
+		//신규정보 업데이트
 		UserDAO udao = UserDAO.getInstance();
 		udao.update(id, pw, name, age, classNo);
 		
-		HttpSession session = request.getSession();
-		session.setAttribute("user_name", name);
+		//신규정보를 가지고 나가야하므로
+		UserVO vo = udao.getInfo(id);
+		return vo;
+		
 	}
 	
 
