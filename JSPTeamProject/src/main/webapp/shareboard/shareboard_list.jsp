@@ -11,7 +11,7 @@
 		<a href="${pageContext.request.contextPath}/user/user_mypage.jsp" title="HOME으로 돌아가기">[ HOME ]</a><hr>
 	</div>
 	
-	<div id="content">
+	<div id="content">                                                                                             
 	<table class="table table-bordered">
 		<thead>
 			<tr>
@@ -37,6 +37,7 @@
 					<form action="" class="form-inline">
 						<div class="form-group">
 							<input type="button" value="글 작성" class="btn btn-default" onclick="location.href='shareboard_write.sb'">
+							<input type="button" value="메인" class="btn btn-default" onclick="location.href='/JSPTeamProject/user/user_mypage.user'">
 						</div>
 					</form>
 				</td>

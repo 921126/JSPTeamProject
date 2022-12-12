@@ -64,7 +64,14 @@ public class ClassBoardController extends HttpServlet {
 			
 			break;
 		}
-		case "/classboard/classboard_list.classboard": {//글목록페이지
+		case "/classboard/classboard_list.classboard": {//글목록페이지 - 이게 게시판 진입페이지
+			
+			//다른반 학생이면 아얘 게시판의 리스트를 볼 수 없게 하고 mypage창으로 보내기
+			String user_classNo = (String)session.getAttribute("user_classNo");
+			if(!user_classNo.equals("704")) {
+				response.sendRedirect("/JSPTeamProject/user/user_mypage.user"); //어떤 상황이든 내가 원하는데로 보내주고싶으면 절대경로 사용하기.
+				return;
+			}
 			
 			//글 목록들의 객체(vo)를 리스트로 받아옴.
 			ArrayList<ClassBoardVO> list = sv.getList(request, response);

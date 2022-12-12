@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 글 조회 테스트</title>
+<title>${contVo.writer } 님의 글</title>
 </head>
 <body>
 	<table>
@@ -33,10 +33,10 @@
 				<c:choose>
 				<c:when test="${sessionScope.user_id == contVo.writer}">
 					<input type="button" value="수정" onclick="location.href='shareboard_modify.sb?sbno=${contVo.sbno }&writer=${contVo.writer }'">&nbsp;&nbsp;
-					<input type="button" value="삭제" onclick="location.href='shareboard_delete.sb?sbno=${contVo.sbno }&writer=${contVo.writer }'">&nbsp;&nbsp;
+					<input type="button" value="삭제" onclick="if(!confirm('정말 삭제하시겠습니까?')) {return false} else {location.href='shareboard_delete.sb?sbno=${contVo.sbno }&writer=${contVo.writer }'}">&nbsp;&nbsp;
 				</c:when>
 				<c:when test="${sessionScope.user_teacher == null }">
-					<input type="button" value="삭제" onclick="location.href='shareboard_delete.sb?sbno=${contVo.sbno }&writer=${contVo.writer }'">&nbsp;&nbsp;
+					<input type="button" value="삭제" onclick="if(!confirm('정말 삭제하시겠습니까?')) {return false} else {location.href='shareboard_delete.sb?sbno=${contVo.sbno }&writer=${contVo.writer }'}">&nbsp;&nbsp;
 				</c:when>
 				</c:choose>
 			</td>

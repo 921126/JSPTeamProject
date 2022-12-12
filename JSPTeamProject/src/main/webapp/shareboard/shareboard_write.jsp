@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공용 게시판 테스트 페이지</title>
+<title>공용 게시판 글 쓰기</title>
 </head>
 <body>
 	<div align="center" class="div_center">
@@ -29,7 +29,7 @@
 				<tr>
 					<td>내용</td>
 					<td>
-						<textarea rows="10" style="width: 95%;" name="content">내용 입력해</textarea>
+						<textarea rows="10" style="width: 95%;" name="content"></textarea>
 					</td>
 				</tr>
 				<tr>

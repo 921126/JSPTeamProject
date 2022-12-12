@@ -41,17 +41,20 @@ public class CBAuthFilter implements Filter{
 		HttpSession session = req.getSession();
 		String user_id = (String)session.getAttribute("user_id");
 		String user_teacher = (String)session.getAttribute("user_teacher");
+		String user_classNo = (String)session.getAttribute("user_classNo");
 		
 		System.out.println("글쓴이: "+ writer);
 		System.out.println("세션ID: " + user_id);
 		System.out.println("user_teacher: " + user_teacher);
+		System.out.println("user_classNo: " + user_classNo);
 		
 		
-		if(writer.equals(user_id) || user_teacher != null ) {
+		
+		if(writer.equals(user_id)  || user_teacher== null ) {
 			
 			chain.doFilter(request, response);
 			
-		} else if(!writer.equals(user_id) || user_teacher == null){
+		} else if(!writer.equals(user_id) || user_teacher != null){
 			
 			String path = req.getContextPath(); //컨택스트패스
 			System.out.println(path);
@@ -62,8 +65,6 @@ public class CBAuthFilter implements Filter{
 			out.println("alert('권한이 필요한 기능입니다');");
 			out.println("location.href='"+path+"/classboard/classboard_list.classboard"+"';");
 			out.println("</script>");
-			
-			return;
 			
 		}
 		
