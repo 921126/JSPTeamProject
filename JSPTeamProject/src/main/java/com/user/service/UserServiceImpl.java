@@ -35,6 +35,24 @@ public class UserServiceImpl implements UserService{
 		
 		return vo;
 	}
+
+	@Override
+	public void update(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		String id = request.getParameter("id");
+		String pw = request.getParameter("pw");
+		String name = request.getParameter("name");
+		String age = request.getParameter("age");
+		String gender = request.getParameter("gender");
+		String classNo = request.getParameter("classNo");
+		String teacher = request.getParameter("teacher");
+		
+		UserDAO udao = UserDAO.getInstance();
+		udao.update(id, pw, name, age, classNo);
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("user_name", name);
+	}
 	
 
 }

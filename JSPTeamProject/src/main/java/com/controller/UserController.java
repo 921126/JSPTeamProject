@@ -44,13 +44,14 @@ public class UserController extends HttpServlet {
 		UserServiceImpl service = new UserServiceImpl();
 		HttpSession session = request.getSession(); //자바에서 세션얻기
 	
+		UserVO vo = new UserVO();
 		
 		if(command.equals("/user/user_login.user")) { //로그인화면
 			
 			request.getRequestDispatcher("user_login.jsp").forward(request, response);
 		}else if(command.equals("/user/login_Form.user")) { //로그인요청
 			
-			UserVO vo = service.login(request, response);
+			vo = service.login(request, response);
 			
 			if(vo == null) { //로그인실패 + 추후 수정수정
 				request.setAttribute("msg", "우리 학원 사람이 아닌거같은데");
@@ -71,6 +72,15 @@ public class UserController extends HttpServlet {
 			}
 		}else if(command.equals("/user/user_mypage.user")) {
 			request.getRequestDispatcher("user_mypage.jsp").forward(request, response);
+			
+		
+		//정보수정
+		}else if(command.equals("/user/user_info.user")) {
+			
+			vo = service.getInfo(request, response);
+			request.setAttribute("vo", vo);
+			
+			request.getRequestDispatcher("user_info.jsp").forward(request, response);
 		}
 	
 	}
