@@ -37,14 +37,21 @@ public class CBAuthFilter implements Filter{
 		//각요청에 넘어오는 writer파라미터
 		String writer = request.getParameter("writer");
 		
-		//세션에 저장된 user_id
+		//세션에 저장된 user_id, user_teacher
 		HttpSession session = req.getSession();
 		String user_id = (String)session.getAttribute("user_id");
+		String user_teacher = (String)session.getAttribute("user_teacher");
 		
-		System.out.println(writer);
-		System.out.println("세션ID" + user_id);
+		System.out.println("글쓴이: "+ writer);
+		System.out.println("세션ID: " + user_id);
+		System.out.println("user_teacher: " + user_teacher);
 		
-		if(user_id == null || !writer.equals(user_id)) {
+		
+		if(writer.equals(user_id) || user_teacher != null ) {
+			
+			chain.doFilter(request, response);
+			
+		} else if(!writer.equals(user_id) || user_teacher == null){
 			
 			String path = req.getContextPath(); //컨택스트패스
 			System.out.println(path);
@@ -57,9 +64,31 @@ public class CBAuthFilter implements Filter{
 			out.println("</script>");
 			
 			return;
+			
 		}
 		
-		chain.doFilter(request, response);
+		
+		
+		
+		
+		
+		
+		
+//		if(!writer.equals(user_id)) {
+//			
+//			String path = req.getContextPath(); //컨택스트패스
+//			System.out.println(path);
+//			
+//			res.setContentType("text/html; charset=utf-8");
+//			PrintWriter out = res.getWriter();
+//			out.println("<script>");
+//			out.println("alert('권한이 필요한 기능입니다');");
+//			out.println("location.href='"+path+"/classboard/classboard_list.classboard"+"';");
+//			out.println("</script>");
+//			
+//			return;
+//		}
+//		chain.doFilter(request, response);
 		
 		
 	}
