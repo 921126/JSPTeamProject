@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,12 @@
 <title>${contVo.writer } 님의 글</title>
 </head>
 <body>
-	<table>
+
+<div align="center" class="div_center">
+
+	<h3>게시글 내용 보기</h3>
+	<hr>
+	<table border="1" width="500">
 		<tr>
 			<td width="20%">글 번호</td>
 			<td width="30%">${contVo.sbno }</td>
@@ -17,7 +23,7 @@
 			<td>작성자</td>
 			<td><b>${contVo.writer }</b></td>
 			<td>작성일</td>
-			<td><b>${contVo.regdate }</b></td>
+			<td><b><fmt:formatDate value="${contVo.regdate }" pattern="yyyy-MM-dd HH시 mm분"/></b></td>
 		</tr>
 		<tr>
 			<td width="20%">글제목</td>
@@ -41,14 +47,15 @@
 				</c:choose>
 			</td>
 		</tr>
-		
+	</table>
+		<table border="1">
  		<c:forEach var="comment" items="${comment }">
 		<tr>
 				<c:if test="${comment.comment_boardNum == contVo.sbno }">
 			<td width="150">
 				<div>
 					${comment.comment_id }<br>
-					<font size="2" color="lightgrey">${comment.comment_boardNum }</font>
+					<font size="2" color="lightgrey">${comment.comment_date }</font>
 				</div>
 				
 			</td>
@@ -80,5 +87,8 @@
 			</table>
 		</form>
 	</div>
+</div>	
+
+	
 </body>
 </html>
