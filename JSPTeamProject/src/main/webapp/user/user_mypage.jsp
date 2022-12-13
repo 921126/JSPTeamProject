@@ -2,10 +2,38 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ include file="../include/header.jsp" %>
+<style>
+		.button{
+		border:none;
+		color: white;
+		padding: 15px 15px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		margin: 4px 2px;
+		cursor: pointer;
+	}
+	.button1 {background-color: #4CAF50;}
+	
+
+	a{
+		width: 300px;
+  		height: 32px;
+		font-size: 15px;
+		border: 0;
+		border-radius: 15px;
+		outline: none;
+		padding-left: 10px;
+		background-color: #4CAF50;
+	}
+	
+
+</style>
 <body>
 	<section>
 	<div id="s_left">
-	<h1>게시판목록</h1>
+	<h1 align="center">게시판목록</h1>
 		<div>
 		<a href="${pageContext.request.contextPath}/shareboard/shareboard_list.sb" title="중앙정보회원 전체 사용가능합니다.">[공용게시판]</a><hr>
 		<a href="${pageContext.request.contextPath}/classboard/classboard_list.classboard" title="같은반 회원만 사용가능합니다.">[반전용게시판]</a><hr>
@@ -21,7 +49,7 @@
 		${sessionScope.user_id }님 환영합니다.<hr>
 		</h2>
 		<h3>나의 정보</h3>
-	<div align="left" style="border-style: dotted; width: 794px; height: 500px;">	
+	<div align="left" style="width: 794px; height: 500px; background-color: white">	
 		<h3>
 		<p style="width: 400px;">이름: ${sessionScope.user_name}</p>
 		<p style="width: 400px;">나이: ${sessionScope.user_age}</p>
